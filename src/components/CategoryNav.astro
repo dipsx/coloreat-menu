@@ -1,0 +1,68 @@
+---
+import { l, type Locale } from '../i18n/utils';
+
+interface NavItem {
+  id: string;
+  label: { en: string; ua: string };
+}
+
+interface Props {
+  items: NavItem[];
+  locale: Locale;
+}
+
+const { items, locale } = Astro.props;
+---
+
+<nav class="sticky top-[57px] z-40 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+  <div class="flex gap-1 py-2 min-w-max">
+    {items.map((item) => (
+      <a
+        href={`#${item.id}`}
+        class="px-3 py-1.5 text-sm font-medium text-warm-600 hover:text-brand-700 hover:bg-brand-50 rounded-full transition-colors whitespace-nowrap"
+        data-nav-link={item.id}
+      >
+        {l(item.label, locale)}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  // Highlight active section in navigation
+  document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('[data-nav-link]');
+    const sections = new Map<string, Element>();
+
+    links.forEach(link => {
+      const id = (link as HTMLElement).dataset.navLink!;
+      const section = document.getElementById(id);
+      if (section) sections.set(id, section);
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            links.forEach(l => l.classList.remove('bg-brand-100', 'text-brand-800'));
+            const activeLink = document.querySelector(`[data-nav-link="${entry.target.id}"]`);
+            activeLink?.classList.add('bg-brand-100', 'text-brand-800');
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -70% 0px', threshold: 0 }
+    );
+
+    sections.forEach(section => observer.observe(section));
+  });
+</script>

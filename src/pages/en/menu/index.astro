@@ -1,0 +1,83 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MenuSection from '../../../components/MenuSection.astro';
+import CategoryNav from '../../../components/CategoryNav.astro';
+import PdfDownload from '../../../components/PdfDownload.astro';
+import { t } from '../../../i18n/utils';
+import menuMain from '../../../data/menu-main.json';
+import menuBreakfast from '../../../data/menu-breakfast.json';
+import menuCrepes from '../../../data/menu-crepes.json';
+import menuDrinks from '../../../data/menu-drinks.json';
+import restaurant from '../../../data/restaurant.json';
+
+const locale = 'en';
+const ui = t(locale);
+
+const navItems = [
+  { id: menuBreakfast.id, label: menuBreakfast.title },
+  { id: menuCrepes.id, label: menuCrepes.title },
+  { id: menuMain.id, label: menuMain.title },
+  { id: menuDrinks.id, label: menuDrinks.title },
+];
+---
+
+<Layout title={ui.menu.title} locale={locale}>
+  <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
+    <!-- Page title -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold font-[Playfair_Display] text-brand-800 mb-2">
+        {ui.menu.title}
+      </h1>
+      <p class="text-warm-500 text-sm">{restaurant.subtitle.en}</p>
+    </div>
+
+    <!-- Category navigation -->
+    <CategoryNav items={navItems} locale={locale} />
+
+    <!-- Menu sections -->
+    <div class="mt-8 space-y-12">
+      <MenuSection
+        menuTitle={menuBreakfast.title}
+        categories={menuBreakfast.categories}
+        locale={locale}
+        menuId={menuBreakfast.id}
+      />
+
+      <MenuSection
+        menuTitle={menuCrepes.title}
+        categories={menuCrepes.categories}
+        locale={locale}
+        menuId={menuCrepes.id}
+      />
+
+      <MenuSection
+        menuTitle={menuMain.title}
+        categories={menuMain.categories}
+        locale={locale}
+        menuId={menuMain.id}
+      />
+
+      <MenuSection
+        menuTitle={menuDrinks.title}
+        categories={menuDrinks.categories}
+        locale={locale}
+        menuId={menuDrinks.id}
+      />
+    </div>
+
+    <!-- Allergy notice -->
+    <div class="mt-10 p-4 bg-amber-50 border border-amber-200 rounded-xl text-center">
+      <p class="text-sm text-amber-800">
+        <svg class="w-4 h-4 inline-block mr-1 -mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        {ui.menu.allergyNotice}
+      </p>
+    </div>
+
+    <!-- PDF downloads -->
+    <div class="mt-8">
+      <PdfDownload locale={locale} />
+    </div>
+  </div>
+</Layout>

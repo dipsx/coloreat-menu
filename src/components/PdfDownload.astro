@@ -1,0 +1,40 @@
+---
+import { t, type Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ui = t(locale);
+
+const pdfs = [
+  { name: locale === 'en' ? 'Main Menu' : 'Основне меню', file: '/menus/ColorEat-Main-Menu.pdf' },
+  { name: locale === 'en' ? 'Breakfast Menu' : 'Меню сніданків', file: '/menus/ColorEat-Breakfast-Menu.pdf' },
+  { name: locale === 'en' ? 'Crêpes Menu' : 'Меню млинців', file: '/menus/ColorEat-Crepes-Menu.pdf' },
+  { name: locale === 'en' ? 'Drinks & Desserts' : 'Напої та десерти', file: '/menus/ColorEat-Drinks-Menu.pdf' },
+];
+---
+
+<div class="bg-warm-100 rounded-xl p-5 sm:p-6">
+  <h3 class="text-lg font-semibold text-warm-800 mb-3 flex items-center gap-2">
+    <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+    </svg>
+    {ui.menu.downloadMenus}
+  </h3>
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    {pdfs.map((pdf) => (
+      <a
+        href={pdf.file}
+        download
+        class="flex items-center gap-2 px-4 py-2.5 bg-white rounded-lg border border-warm-200 text-sm font-medium text-warm-700 hover:border-brand-400 hover:text-brand-700 hover:shadow-sm transition-all"
+      >
+        <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM6 20V4h7v5h5v11H6z" />
+        </svg>
+        {pdf.name}
+      </a>
+    ))}
+  </div>
+</div>

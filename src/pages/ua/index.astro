@@ -1,0 +1,103 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DeliveryLinks from '../../components/DeliveryLinks.astro';
+import { t } from '../../i18n/utils';
+import restaurant from '../../data/restaurant.json';
+
+const locale = 'ua';
+const ui = t(locale);
+---
+
+<Layout title={ui.nav.home} locale={locale} description="Автентична українська кухня в Оквіллі. Свіжі інгредієнти, домашні смаки.">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-white/20 blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-80 h-80 rounded-full bg-brand-400/20 blur-3xl"></div>
+    </div>
+    <div class="relative max-w-5xl mx-auto px-4 py-16 sm:py-24 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-[Playfair_Display] mb-4 leading-tight">
+        {ui.home.heroTitle}
+      </h1>
+      <p class="text-lg sm:text-xl text-brand-100 mb-2 font-medium">
+        {ui.home.heroSubtitle}
+      </p>
+      <p class="text-brand-200 mb-8 max-w-2xl mx-auto">
+        {restaurant.description.ua}
+      </p>
+      <a
+        href="/ua/menu/"
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-brand-800 font-bold rounded-full hover:bg-brand-50 transition-colors shadow-lg hover:shadow-xl text-lg"
+      >
+        {ui.home.viewMenu}
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="max-w-5xl mx-auto px-4 py-12 sm:py-16">
+    <h2 class="text-2xl sm:text-3xl font-bold font-[Playfair_Display] text-center text-brand-800 mb-10">
+      {ui.home.services}
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      <!-- Dine-in -->
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-warm-100 hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 mx-auto mb-4 bg-brand-100 rounded-full flex items-center justify-center">
+          <svg class="w-7 h-7 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h18v18H3zM12 8v4m0 0v4m0-4h4m-4 0H8" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-warm-900 mb-1">{ui.home.dineIn}</h3>
+        <p class="text-sm text-warm-600">{ui.home.dineInDesc}</p>
+      </div>
+
+      <!-- Takeout -->
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-warm-100 hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 mx-auto mb-4 bg-brand-100 rounded-full flex items-center justify-center">
+          <svg class="w-7 h-7 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-warm-900 mb-1">{ui.home.takeout}</h3>
+        <p class="text-sm text-warm-600">{ui.home.takeoutDesc}</p>
+        <a href={`tel:${restaurant.phone.replace(/[^\d+]/g, '')}`} class="text-brand-600 text-sm font-medium mt-2 inline-block hover:text-brand-700">
+          {restaurant.phone}
+        </a>
+      </div>
+
+      <!-- Delivery -->
+      <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-warm-100 hover:shadow-md transition-shadow">
+        <div class="w-14 h-14 mx-auto mb-4 bg-brand-100 rounded-full flex items-center justify-center">
+          <svg class="w-7 h-7 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-warm-900 mb-1">{ui.home.delivery}</h3>
+        <p class="text-sm text-warm-600 mb-3">{ui.home.deliveryDesc}</p>
+      </div>
+    </div>
+
+    <!-- Delivery buttons -->
+    <div class="max-w-md mx-auto">
+      <DeliveryLinks locale={locale} />
+    </div>
+  </section>
+
+  <!-- Location -->
+  <section class="bg-white border-t border-warm-100">
+    <div class="max-w-5xl mx-auto px-4 py-12 sm:py-16 text-center">
+      <h2 class="text-2xl sm:text-3xl font-bold font-[Playfair_Display] text-brand-800 mb-4">
+        {ui.footer.visitUs}
+      </h2>
+      <p class="text-warm-600 mb-2 text-lg">{restaurant.address}</p>
+      <a href={`tel:${restaurant.phone.replace(/[^\d+]/g, '')}`} class="text-brand-600 font-medium hover:text-brand-700 text-lg">
+        {restaurant.phone}
+      </a>
+      <p class="text-warm-500 mt-2">{restaurant.hours.ua}</p>
+    </div>
+  </section>
+</Layout>

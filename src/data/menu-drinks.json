@@ -1,0 +1,152 @@
+{
+  "id": "drinks-desserts",
+  "title": {
+    "en": "Drinks & Desserts",
+    "ua": "Напої та десерти"
+  },
+  "categories": [
+    {
+      "id": "hot-drinks",
+      "title": {
+        "en": "Hot Drinks",
+        "ua": "Гарячі напої"
+      },
+      "items": [
+        {
+          "id": "espresso",
+          "name": { "en": "Espresso", "ua": "Еспресо" },
+          "description": { "en": "", "ua": "" },
+          "price": 4.00,
+          "dietary": []
+        },
+        {
+          "id": "double-espresso",
+          "name": { "en": "Double Espresso", "ua": "Подвійне еспресо" },
+          "description": { "en": "", "ua": "" },
+          "price": 5.00,
+          "dietary": []
+        },
+        {
+          "id": "americano",
+          "name": { "en": "Americano", "ua": "Американо" },
+          "description": { "en": "", "ua": "" },
+          "price": 4.00,
+          "dietary": []
+        },
+        {
+          "id": "cappuccino",
+          "name": { "en": "Cappuccino", "ua": "Капучіно" },
+          "description": { "en": "", "ua": "" },
+          "price": 6.00,
+          "dietary": []
+        },
+        {
+          "id": "tea",
+          "name": { "en": "Tea", "ua": "Чай" },
+          "description": {
+            "en": "Black tea, green tea, herbal tea",
+            "ua": "Чорний чай, зелений чай, трав'яний чай"
+          },
+          "price": 5.00,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "cold-drinks",
+      "title": {
+        "en": "Cold Drinks",
+        "ua": "Холодні напої"
+      },
+      "items": [
+        {
+          "id": "orange-juice",
+          "name": { "en": "Freshly Squeezed Orange Juice", "ua": "Свіжовичавлений апельсиновий сік" },
+          "description": { "en": "", "ua": "" },
+          "price": 9.00,
+          "dietary": []
+        },
+        {
+          "id": "grapefruit-juice",
+          "name": { "en": "Freshly Squeezed Grapefruit Juice", "ua": "Свіжовичавлений грейпфрутовий сік" },
+          "description": { "en": "", "ua": "" },
+          "price": 12.00,
+          "dietary": []
+        },
+        {
+          "id": "soft-drinks",
+          "name": { "en": "Soft Drinks", "ua": "Безалкогольні напої" },
+          "description": {
+            "en": "Coca-Cola, Coca-Cola Zero, Fanta, Ginger Ale, Club Soda",
+            "ua": "Coca-Cola, Coca-Cola Zero, Fanta, Ginger Ale, Club Soda"
+          },
+          "price": 3.00,
+          "dietary": []
+        },
+        {
+          "id": "bottled-water",
+          "name": { "en": "Bottled Water", "ua": "Вода в пляшці" },
+          "description": { "en": "", "ua": "" },
+          "price": 2.00,
+          "dietary": []
+        },
+        {
+          "id": "perrier",
+          "name": { "en": "Perrier Sparkling Water", "ua": "Perrier газована вода" },
+          "description": { "en": "", "ua": "" },
+          "price": 5.00,
+          "dietary": []
+        },
+        {
+          "id": "compote",
+          "name": { "en": "Compote", "ua": "Компот" },
+          "description": {
+            "en": "Traditional fruit drink",
+            "ua": "Традиційний фруктовий напій"
+          },
+          "price": 4.00,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": {
+        "en": "Desserts",
+        "ua": "Десерти"
+      },
+      "items": [
+        {
+          "id": "fruit-platter",
+          "name": { "en": "Fruit Platter", "ua": "Фруктова тарілка" },
+          "description": {
+            "en": "An assortment of grapes, apples, blueberries, and bananas (fruits may vary based on seasonal availability)",
+            "ua": "Асорті з винограду, яблук, чорниць та бананів (фрукти можуть змінюватись залежно від сезону)"
+          },
+          "price": 15.00,
+          "dietary": ["vegetarian", "gluten-free", "dairy-free"]
+        },
+        {
+          "id": "lviv-cheesecake",
+          "name": { "en": "Lviv Style Cheesecake", "ua": "Львівський сирник" },
+          "description": {
+            "en": "A traditional cheesecake made from our homemade cottage cheese, served with sour cream, drizzled with rich chocolate, and topped with fresh berries",
+            "ua": "Традиційний сирник з домашнього сиру, подається зі сметаною, политий шоколадом та прикрашений свіжими ягодами"
+          },
+          "price": 14.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "ice-cream",
+          "name": { "en": "Ice Cream", "ua": "Морозиво" },
+          "description": {
+            "en": "Choice of plain vanilla or vanilla ice cream with peanut butter cups and fudge swirl",
+            "ua": "Ванільне морозиво або ванільне морозиво з арахісовим маслом та шоколадом"
+          },
+          "price": 6.00,
+          "dietary": ["vegetarian", "gluten-free"]
+        }
+      ]
+    }
+  ]
+}

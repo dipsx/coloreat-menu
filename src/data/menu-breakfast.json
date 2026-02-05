@@ -1,0 +1,88 @@
+{
+  "id": "breakfast",
+  "title": {
+    "en": "Breakfast / Brunch",
+    "ua": "Сніданок / Бранч"
+  },
+  "categories": [
+    {
+      "id": "brunch",
+      "title": {
+        "en": "Brunch",
+        "ua": "Бранч"
+      },
+      "items": [
+        {
+          "id": "avocado-toast",
+          "name": { "en": "Avocado Toast", "ua": "Тост з авокадо" },
+          "description": {
+            "en": "Toasted bread topped with creamy Philadelphia cheese, fresh avocado, juicy tomatoes and a sunny-side-up egg",
+            "ua": "Підсмажений хліб з ніжним сиром Філадельфія, свіжим авокадо, соковитими помідорами та яйцем"
+          },
+          "price": 15.95,
+          "dietary": []
+        },
+        {
+          "id": "homemade-cottage-cheese",
+          "name": { "en": "Homemade Cottage Cheese", "ua": "Домашній сир" },
+          "description": {
+            "en": "Homemade Ukrainian cottage cheese, made with love in-house. Served with your choice of honey or maple syrup and a selection of seasonal berries",
+            "ua": "Домашній український сир, приготований з любов'ю. Подається з медом або кленовим сиропом та сезонними ягодами"
+          },
+          "price": 15.95,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "lviv-cheesecake-breakfast",
+          "name": { "en": "Lviv Style Cheesecake", "ua": "Львівський сирник" },
+          "description": {
+            "en": "Creamy and rich cottage cheese casserole, drizzled with smooth milk chocolate. Served with a dollop of sour cream and fresh berries",
+            "ua": "Ніжна й насичена запіканка з домашнього сиру, политий молочним шоколадом. Подається зі сметаною та свіжими ягодами"
+          },
+          "price": 14.95,
+          "dietary": ["vegetarian", "gluten-free"]
+        },
+        {
+          "id": "oatmeal-berries",
+          "name": { "en": "Oatmeal & Berries", "ua": "Вівсянка з ягодами" },
+          "description": {
+            "en": "Warm, creamy oatmeal made with milk and topped with fresh berries",
+            "ua": "Тепла вівсянка на молоці з свіжими ягодами"
+          },
+          "price": 12.95,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "salmon-breakfast",
+          "name": { "en": "Salmon Breakfast", "ua": "Сніданок з лососем" },
+          "description": {
+            "en": "Sunny-side-up eggs or scrambled eggs, served with smoked salmon, avocado, cucumber, tomatoes, roasted potatoes and toasted bread",
+            "ua": "Яйця або скрембл з копченим лососем, авокадо, огірком, помідорами, смаженою картоплею та тостом"
+          },
+          "price": 19.95,
+          "dietary": []
+        },
+        {
+          "id": "meat-breakfast",
+          "name": { "en": "Meat Breakfast", "ua": "М'ясний сніданок" },
+          "description": {
+            "en": "Sunny-side-up eggs or scrambled eggs, served with ham, sausages, avocado, cucumber, tomatoes, roasted potatoes and toasted bread",
+            "ua": "Яйця або скрембл з шинкою, ковбасками, авокадо, огірком, помідорами, смаженою картоплею та тостом"
+          },
+          "price": 17.95,
+          "dietary": []
+        },
+        {
+          "id": "chicken-sandwich",
+          "name": { "en": "Chicken Sandwich", "ua": "Сендвіч з куркою" },
+          "description": {
+            "en": "Soft bun, juicy chicken, crispy fried onions, and creamy cheese sauce",
+            "ua": "М'яка булочка, соковита курка, хрустка смажена цибуля та ніжний сирний соус"
+          },
+          "price": 13.95,
+          "dietary": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "id": "crepes",
+  "title": {
+    "en": "Crêpes",
+    "ua": "Млинці"
+  },
+  "categories": [
+    {
+      "id": "sweet-crepes",
+      "title": {
+        "en": "Sweet Crêpes",
+        "ua": "Солодкі млинці"
+      },
+      "items": [
+        {
+          "id": "cottage-cheese-crepes",
+          "name": { "en": "Cottage Cheese Crêpes", "ua": "Млинці з сиром" },
+          "description": {
+            "en": "Delicate crêpes filled with homemade cottage cheese",
+            "ua": "Ніжні млинці з домашнім сиром"
+          },
+          "price": 14.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "apple-cinnamon",
+          "name": { "en": "Apple & Cinnamon", "ua": "Яблуко та кориця" },
+          "description": {
+            "en": "Crêpes with caramelized apples and aromatic cinnamon",
+            "ua": "Млинці з карамелізованими яблуками та ароматною корицею"
+          },
+          "price": 13.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "banana-nutella",
+          "name": { "en": "Banana & Nutella", "ua": "Банан та нутелла" },
+          "description": {
+            "en": "Crêpes with fresh banana and rich Nutella spread",
+            "ua": "Млинці зі свіжим бананом та нутеллою"
+          },
+          "price": 11.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "trio-with-toppings",
+          "name": { "en": "Trio with Toppings", "ua": "Тріо з топінгами" },
+          "description": {
+            "en": "Served with sour cream and two toppings of your choice: honey, maple syrup, condensed milk, orange jam, strawberry jam or Nutella",
+            "ua": "Подаються зі сметаною та двома топінгами на вибір: мед, кленовий сироп, згущене молоко, апельсиновий джем, полуничний джем або нутелла"
+          },
+          "price": 13.00,
+          "dietary": ["vegetarian"]
+        }
+      ]
+    },
+    {
+      "id": "savory-crepes",
+      "title": {
+        "en": "Savory Crêpes",
+        "ua": "Солоні млинці"
+      },
+      "items": [
+        {
+          "id": "salmon-cream-cheese",
+          "name": { "en": "Salmon & Cream Cheese", "ua": "Лосось та крем-сир" },
+          "description": {
+            "en": "Crêpes with smoked salmon and cream cheese",
+            "ua": "Млинці з копченим лососем та крем-сиром"
+          },
+          "price": 25.00,
+          "dietary": []
+        },
+        {
+          "id": "avocado-toast-style",
+          "name": { "en": "Avocado Toast Style", "ua": "В стилі тосту з авокадо" },
+          "description": {
+            "en": "Crêpes styled as an avocado toast with fresh toppings",
+            "ua": "Млинці у стилі тосту з авокадо та свіжими топінгами"
+          },
+          "price": 17.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "caviar-butter",
+          "name": { "en": "Caviar & Butter", "ua": "Ікра та масло" },
+          "description": {
+            "en": "Luxurious crêpes with caviar and butter",
+            "ua": "Вишукані млинці з ікрою та маслом"
+          },
+          "price": 27.00,
+          "dietary": []
+        },
+        {
+          "id": "classic-ham-cheese",
+          "name": { "en": "Classic Ham & Cheese", "ua": "Класичний з шинкою та сиром" },
+          "description": {
+            "en": "Traditional crêpes with ham and melted cheese",
+            "ua": "Традиційні млинці з шинкою та плавленим сиром"
+          },
+          "price": 14.00,
+          "dietary": []
+        },
+        {
+          "id": "creamy-mushroom",
+          "name": { "en": "Creamy Mushroom", "ua": "Грибний у вершковому соусі" },
+          "description": {
+            "en": "Crêpes with creamy mushroom filling with delicate truffle flavour",
+            "ua": "Млинці з грибною начинкою у вершковому соусі з делікатним трюфельним смаком"
+          },
+          "price": 17.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "juicy-chicken-onions",
+          "name": { "en": "Juicy Chicken with Fried Onions", "ua": "Соковита курка зі смаженою цибулею" },
+          "description": {
+            "en": "Crêpes filled with juicy chicken and crispy fried onions",
+            "ua": "Млинці з соковитою куркою та хрусткою смаженою цибулею"
+          },
+          "price": 22.00,
+          "dietary": []
+        },
+        {
+          "id": "beef-stroganoff-style",
+          "name": { "en": "Beef Stroganoff Style", "ua": "У стилі бефстроганов" },
+          "description": {
+            "en": "Crêpes with tender beef in a rich creamy Stroganoff sauce",
+            "ua": "Млинці з ніжною яловичиною у насиченому вершковому соусі строганов"
+          },
+          "price": 24.00,
+          "dietary": []
+        }
+      ]
+    }
+  ]
+}

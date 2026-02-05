@@ -1,0 +1,41 @@
+{
+  "nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "downloadPdf": "Download PDF"
+  },
+  "home": {
+    "heroTitle": "Welcome to ColorEat",
+    "heroSubtitle": "A piece of Ukraine in Oakville",
+    "viewMenu": "View Menu",
+    "services": "Our Services",
+    "dineIn": "Dine-in",
+    "takeout": "Takeout",
+    "delivery": "Delivery",
+    "dineInDesc": "Enjoy our cozy atmosphere",
+    "takeoutDesc": "Call to place your order",
+    "deliveryDesc": "Order through our delivery partners",
+    "orderOn": "Order on"
+  },
+  "menu": {
+    "title": "Our Menu",
+    "allCategories": "All",
+    "allergyNotice": "Please inform your server about any allergies or dietary restrictions",
+    "downloadMenus": "Download PDF Menus"
+  },
+  "dietary": {
+    "vegetarian": "Vegetarian",
+    "gluten-free": "GF",
+    "dairy-free": "DF"
+  },
+  "footer": {
+    "visitUs": "Visit Us",
+    "followUs": "Follow Us",
+    "orderDelivery": "Order Delivery",
+    "rights": "All rights reserved"
+  },
+  "language": {
+    "en": "English",
+    "ua": "Українська"
+  }
+}

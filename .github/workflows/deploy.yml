@@ -167,6 +167,9 @@ jobs:
           </html>
           HTMLEOF
 
+      - name: Ensure .nojekyll exists
+        run: touch gh-pages/.nojekyll
+
       - name: Push to gh-pages
         run: |
           cd gh-pages
@@ -329,6 +332,9 @@ jobs:
           </body>
           </html>
           HTMLEOF
+
+      - name: Ensure .nojekyll exists
+        run: touch gh-pages/.nojekyll
 
       - name: Push to gh-pages
         run: |

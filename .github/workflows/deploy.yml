@@ -2,23 +2,41 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, release]
   workflow_dispatch:
+    inputs:
+      label:
+        description: 'Optional label for this build (e.g. v1.2-beta, new-drinks-menu)'
+        required: false
+        default: ''
+      deploy_type:
+        description: 'Deploy type'
+        required: true
+        default: 'preview'
+        type: choice
+        options:
+          - preview
+          - release
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
+  group: deploy-${{ github.ref_name }}
   cancel-in-progress: false
 
+env:
+  REPO_BASE: /coloreat-menu
+
 jobs:
-  build:
+  # ─── Preview: triggered on push to main or manual preview ───
+  preview:
+    if: |
+      (github.event_name == 'push' && github.ref_name == 'main') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_type == 'preview')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout source
         uses: actions/checkout@v4
 
       - name: Setup Bun
@@ -27,21 +45,297 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Build site
+      - name: Generate timestamp
+        id: ts
+        run: echo "stamp=$(date -u +'%Y%m%d_%H%M')" >> "$GITHUB_OUTPUT"
+
+      - name: Build preview
+        env:
+          ASTRO_BASE: ${{ env.REPO_BASE }}/preview/${{ steps.ts.outputs.stamp }}/
         run: bun run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
         with:
-          path: ./dist
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
 
-  deploy:
-    needs: build
+      - name: Copy preview build
+        run: |
+          mkdir -p gh-pages/preview/${{ steps.ts.outputs.stamp }}
+          cp -r dist/* gh-pages/preview/${{ steps.ts.outputs.stamp }}/
+
+      - name: Save build metadata
+        run: |
+          cat > gh-pages/preview/${{ steps.ts.outputs.stamp }}/.build-meta.json <<METAEOF
+          {
+            "timestamp": "${{ steps.ts.outputs.stamp }}",
+            "commit": "${{ github.sha }}",
+            "commitShort": "$(echo ${{ github.sha }} | cut -c1-7)",
+            "label": "${{ github.event.inputs.label || '' }}",
+            "branch": "${{ github.ref_name }}",
+            "date": "$(date -u +'%Y-%m-%d %H:%M UTC')"
+          }
+          METAEOF
+
+      - name: Cleanup old previews (keep last 20)
+        run: |
+          cd gh-pages/preview
+          # List directories sorted oldest first, skip non-timestamp dirs
+          dirs=$(ls -d [0-9]*_[0-9]*/ 2>/dev/null | sort | head -n -20) || true
+          if [ -n "$dirs" ]; then
+            echo "Removing old previews: $dirs"
+            echo "$dirs" | xargs rm -rf
+          fi
+
+      - name: Generate preview index
+        run: |
+          cd gh-pages/preview
+          cat > index.html <<'HTMLEOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ColorEat - Preview Builds</title>
+            <style>
+              * { margin: 0; padding: 0; box-sizing: border-box; }
+              body { font-family: 'Inter', system-ui, sans-serif; background: #FFFBF5; color: #44403c; padding: 2rem; max-width: 800px; margin: 0 auto; }
+              h1 { font-family: 'Playfair Display', Georgia, serif; color: #6F4E37; margin-bottom: 0.5rem; font-size: 1.75rem; }
+              .subtitle { color: #78716c; margin-bottom: 2rem; font-size: 0.9rem; }
+              .build { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; margin-bottom: 0.5rem; background: white; border-radius: 0.75rem; border: 1px solid #f5f0eb; transition: border-color 0.2s; }
+              .build:hover { border-color: #6F4E37; }
+              .build-info { display: flex; flex-direction: column; gap: 0.25rem; }
+              .build-date { font-weight: 600; color: #292524; }
+              .build-meta { font-size: 0.8rem; color: #a8a29e; }
+              .build-label { display: inline-block; background: #6F4E37; color: white; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.5rem; }
+              a.build-link { color: #6F4E37; text-decoration: none; font-weight: 500; white-space: nowrap; }
+              a.build-link:hover { text-decoration: underline; }
+              .back { display: inline-block; margin-bottom: 1.5rem; color: #6F4E37; text-decoration: none; font-size: 0.9rem; }
+              .back:hover { text-decoration: underline; }
+              .empty { text-align: center; padding: 3rem; color: #a8a29e; }
+            </style>
+          </head>
+          <body>
+            <a class="back" href="../en/">&larr; Back to site</a>
+            <h1>Preview Builds</h1>
+            <p class="subtitle">Development previews from the main branch</p>
+            <div id="builds"></div>
+            <script>
+          HTMLEOF
+
+          # Generate JS data from build metadata
+          echo "const builds = [" >> index.html
+          for dir in $(ls -d [0-9]*_[0-9]*/ 2>/dev/null | sort -r); do
+            stamp="${dir%/}"
+            meta_file="$dir/.build-meta.json"
+            if [ -f "$meta_file" ]; then
+              commit=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('commitShort',''))" 2>/dev/null || echo "")
+              label=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('label',''))" 2>/dev/null || echo "")
+              date_str=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('date',''))" 2>/dev/null || echo "")
+            else
+              commit=""
+              label=""
+              date_str=""
+            fi
+            echo "  { stamp: '$stamp', commit: '$commit', label: '$label', date: '$date_str' }," >> index.html
+          done
+          echo "];" >> index.html
+
+          cat >> index.html <<'HTMLEOF'
+              const container = document.getElementById('builds');
+              if (builds.length === 0) {
+                container.innerHTML = '<p class="empty">No preview builds yet.</p>';
+              } else {
+                builds.forEach(b => {
+                  const labelHtml = b.label ? `<span class="build-label">${b.label}</span>` : '';
+                  const commitHtml = b.commit ? ` &middot; <code>${b.commit}</code>` : '';
+                  const dateHtml = b.date || b.stamp.replace('_', ' ');
+                  container.innerHTML += `
+                    <div class="build">
+                      <div class="build-info">
+                        <span class="build-date">${dateHtml}${labelHtml}</span>
+                        <span class="build-meta">${b.stamp}${commitHtml}</span>
+                      </div>
+                      <a class="build-link" href="${b.stamp}/en/">Open &rarr;</a>
+                    </div>`;
+                });
+              }
+            </script>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Push to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
+          git commit -m "preview: ${{ steps.ts.outputs.stamp }} (${{ github.sha }})"
+          git push
+
+  # ─── Release: triggered on push to release or manual release ───
+  release:
+    if: |
+      (github.event_name == 'push' && github.ref_name == 'release') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_type == 'release')
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Generate timestamp
+        id: ts
+        run: echo "stamp=$(date -u +'%Y%m%d_%H%M')" >> "$GITHUB_OUTPUT"
+
+      - name: Build production
+        env:
+          ASTRO_BASE: ${{ env.REPO_BASE }}/
+        run: bun run build
+
+      - name: Save production build
+        run: cp -r dist prod-dist
+
+      - name: Build release archive
+        env:
+          ASTRO_BASE: ${{ env.REPO_BASE }}/release/${{ steps.ts.outputs.stamp }}/
+        run: bun run build
+
+      - name: Save archive build
+        run: mv dist archive-dist
+
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: gh-pages
+          fetch-depth: 1
+
+      - name: Deploy production to root
+        run: |
+          cd gh-pages
+          # Remove everything except preview/, release/, and .git/
+          find . -maxdepth 1 \
+            ! -name '.' \
+            ! -name '.git' \
+            ! -name 'preview' \
+            ! -name 'release' \
+            -exec rm -rf {} +
+          # Copy production build to root
+          cp -r ../prod-dist/* .
+
+      - name: Copy release archive
+        run: |
+          mkdir -p gh-pages/release/${{ steps.ts.outputs.stamp }}
+          cp -r archive-dist/* gh-pages/release/${{ steps.ts.outputs.stamp }}/
+
+      - name: Save release metadata
+        run: |
+          cat > gh-pages/release/${{ steps.ts.outputs.stamp }}/.build-meta.json <<METAEOF
+          {
+            "timestamp": "${{ steps.ts.outputs.stamp }}",
+            "commit": "${{ github.sha }}",
+            "commitShort": "$(echo ${{ github.sha }} | cut -c1-7)",
+            "label": "${{ github.event.inputs.label || '' }}",
+            "branch": "${{ github.ref_name }}",
+            "date": "$(date -u +'%Y-%m-%d %H:%M UTC')"
+          }
+          METAEOF
+
+      - name: Generate release index
+        run: |
+          cd gh-pages/release
+          cat > index.html <<'HTMLEOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>ColorEat - Release History</title>
+            <style>
+              * { margin: 0; padding: 0; box-sizing: border-box; }
+              body { font-family: 'Inter', system-ui, sans-serif; background: #FFFBF5; color: #44403c; padding: 2rem; max-width: 800px; margin: 0 auto; }
+              h1 { font-family: 'Playfair Display', Georgia, serif; color: #6F4E37; margin-bottom: 0.5rem; font-size: 1.75rem; }
+              .subtitle { color: #78716c; margin-bottom: 2rem; font-size: 0.9rem; }
+              .build { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; margin-bottom: 0.5rem; background: white; border-radius: 0.75rem; border: 1px solid #f5f0eb; transition: border-color 0.2s; }
+              .build:hover { border-color: #6F4E37; }
+              .build-info { display: flex; flex-direction: column; gap: 0.25rem; }
+              .build-date { font-weight: 600; color: #292524; }
+              .build-meta { font-size: 0.8rem; color: #a8a29e; }
+              .build-label { display: inline-block; background: #6F4E37; color: white; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.5rem; }
+              .build-current { display: inline-block; background: #16a34a; color: white; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.5rem; }
+              a.build-link { color: #6F4E37; text-decoration: none; font-weight: 500; white-space: nowrap; }
+              a.build-link:hover { text-decoration: underline; }
+              .back { display: inline-block; margin-bottom: 1.5rem; color: #6F4E37; text-decoration: none; font-size: 0.9rem; }
+              .back:hover { text-decoration: underline; }
+              .empty { text-align: center; padding: 3rem; color: #a8a29e; }
+            </style>
+          </head>
+          <body>
+            <a class="back" href="../en/">&larr; Back to site</a>
+            <h1>Release History</h1>
+            <p class="subtitle">Production releases archive</p>
+            <div id="builds"></div>
+            <script>
+          HTMLEOF
+
+          echo "const builds = [" >> index.html
+          for dir in $(ls -d [0-9]*_[0-9]*/ 2>/dev/null | sort -r); do
+            stamp="${dir%/}"
+            meta_file="$dir/.build-meta.json"
+            if [ -f "$meta_file" ]; then
+              commit=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('commitShort',''))" 2>/dev/null || echo "")
+              label=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('label',''))" 2>/dev/null || echo "")
+              date_str=$(python3 -c "import json; d=json.load(open('$meta_file')); print(d.get('date',''))" 2>/dev/null || echo "")
+            else
+              commit=""
+              label=""
+              date_str=""
+            fi
+            echo "  { stamp: '$stamp', commit: '$commit', label: '$label', date: '$date_str' }," >> index.html
+          done
+          echo "];" >> index.html
+
+          cat >> index.html <<'HTMLEOF'
+              const container = document.getElementById('builds');
+              if (builds.length === 0) {
+                container.innerHTML = '<p class="empty">No releases yet.</p>';
+              } else {
+                builds.forEach((b, i) => {
+                  const labelHtml = b.label ? `<span class="build-label">${b.label}</span>` : '';
+                  const currentHtml = i === 0 ? '<span class="build-current">current</span>' : '';
+                  const commitHtml = b.commit ? ` &middot; <code>${b.commit}</code>` : '';
+                  const dateHtml = b.date || b.stamp.replace('_', ' ');
+                  container.innerHTML += `
+                    <div class="build">
+                      <div class="build-info">
+                        <span class="build-date">${dateHtml}${currentHtml}${labelHtml}</span>
+                        <span class="build-meta">${b.stamp}${commitHtml}</span>
+                      </div>
+                      <a class="build-link" href="${b.stamp}/en/">Open &rarr;</a>
+                    </div>`;
+                });
+              }
+            </script>
+          </body>
+          </html>
+          HTMLEOF
+
+      - name: Push to gh-pages
+        run: |
+          cd gh-pages
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && echo "No changes to deploy" && exit 0
+          git commit -m "release: ${{ steps.ts.outputs.stamp }} (${{ github.sha }})"
+          git push

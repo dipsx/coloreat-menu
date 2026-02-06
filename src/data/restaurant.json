@@ -29,13 +29,13 @@
   "googleMapsUrl": "https://www.google.com/maps/place/ColorEat/@43.4456,-79.6799,17z/",
   "phone": "(289) 400-4695",
   "hours": {
-    "monday":    { "open": "11:00", "close": "20:00" },
-    "tuesday":   { "open": "11:00", "close": "20:00" },
-    "wednesday": { "open": "11:00", "close": "20:00" },
-    "thursday":  { "open": "11:00", "close": "20:00" },
-    "friday":    { "open": "11:00", "close": "21:00" },
-    "saturday":  { "open": "10:00", "close": "21:00" },
-    "sunday":    { "open": "10:00", "close": "20:00" }
+    "monday":    null,
+    "tuesday":   null,
+    "wednesday": null,
+    "thursday":  { "open": "12:00", "close": "20:00" },
+    "friday":    { "open": "12:00", "close": "21:00" },
+    "saturday":  { "open": "12:00", "close": "21:00" },
+    "sunday":    { "open": "12:00", "close": "20:00" }
   },
   "timezone": "America/Toronto",
   "services": {
@@ -44,8 +44,8 @@
     "delivery": true
   },
   "delivery": {
-    "ubereats": "https://www.ubereats.com/ca/store/coloreat-cafe/",
-    "doordash": "https://www.doordash.com/store/coloreat-oakville/"
+    "ubereats": "https://www.ubereats.com/ca/store/coloreat/Qr-6ZaimQM6T0VRVWo7nEA",
+    "doordash": "https://www.doordash.com/store/coloreat-oakville-33384137/93558961"
   },
   "social": {
     "instagram": "https://www.instagram.com/coloreat.cafe/"

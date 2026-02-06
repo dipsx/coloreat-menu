@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://dipsx.github.io',
-  base: '/coloreat-menu',
+  base: process.env.ASTRO_BASE || '/coloreat-menu',
   output: 'static',
   i18n: {
     defaultLocale: 'en',

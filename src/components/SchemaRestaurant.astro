@@ -19,14 +19,16 @@ const dayMap: Record<string, string> = {
   sunday: 'Sunday',
 };
 
-const hours = restaurant.hours as Record<string, { open: string; close: string }>;
+const hours = restaurant.hours as Record<string, { open: string; close: string } | null>;
 
-const openingHours = Object.entries(hours).map(([day, h]) => ({
-  '@type': 'OpeningHoursSpecification',
-  dayOfWeek: dayMap[day],
-  opens: h.open,
-  closes: h.close,
-}));
+const openingHours = Object.entries(hours)
+  .filter(([, h]) => h !== null)
+  .map(([day, h]) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: dayMap[day],
+    opens: h!.open,
+    closes: h!.close,
+  }));
 
 const siteUrl = Astro.site ? new URL(base, Astro.site).href : '';
 

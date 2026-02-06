@@ -13,9 +13,11 @@ const ui = t(locale);
 const dayOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
 type DayKey = typeof dayOrder[number];
 
-const hours = restaurant.hours as Record<DayKey, { open: string; close: string }>;
+const hours = restaurant.hours as Record<DayKey, { open: string; close: string } | null>;
 const dayNames = ui.hours.days as Record<DayKey, string>;
 const dayNamesShort = ui.hours.daysShort as Record<DayKey, string>;
+
+const closedLabel = ui.hours.closed;
 
 function formatTime(time24: string): string {
   const [h, m] = time24.split(':').map(Number);
@@ -45,20 +47,27 @@ function formatTime(time24: string): string {
       </div>
     </div>
     <ul class="space-y-1.5">
-      {dayOrder.map((day, i) => (
-        <li
-          class="flex justify-between items-center px-3 py-2 rounded-lg text-sm transition-colors"
-          data-day-index={i}
-        >
-          <span class="font-medium text-warm-700">
-            <span class="hidden sm:inline">{dayNames[day]}</span>
-            <span class="sm:hidden">{dayNamesShort[day]}</span>
-          </span>
-          <span class="text-warm-600 tabular-nums">
-            {formatTime(hours[day].open)} – {formatTime(hours[day].close)}
-          </span>
-        </li>
-      ))}
+      {dayOrder.map((day, i) => {
+        const dayHours = hours[day];
+        return (
+          <li
+            class="flex justify-between items-center px-3 py-2 rounded-lg text-sm transition-colors"
+            data-day-index={i}
+          >
+            <span class="font-medium text-warm-700">
+              <span class="hidden sm:inline">{dayNames[day]}</span>
+              <span class="sm:hidden">{dayNamesShort[day]}</span>
+            </span>
+            {dayHours ? (
+              <span class="text-warm-600 tabular-nums">
+                {formatTime(dayHours.open)} – {formatTime(dayHours.close)}
+              </span>
+            ) : (
+              <span class="text-warm-400 italic">{closedLabel}</span>
+            )}
+          </li>
+        );
+      })}
     </ul>
   </div>
 )}
@@ -84,17 +93,19 @@ function formatTime(time24: string): string {
       const currentMinutes = hour * 60 + minute;
 
       const todayHours = hours[weekday];
-      if (!todayHours) return;
-
-      const [openH, openM] = todayHours.open.split(':').map(Number);
-      const [closeH, closeM] = todayHours.close.split(':').map(Number);
-      const openMinutes = openH * 60 + openM;
-      const closeMinutes = closeH * 60 + closeM;
-
-      const isOpen = currentMinutes >= openMinutes && currentMinutes < closeMinutes;
-
       const dot = el.querySelector('.status-dot') as HTMLElement;
       const text = el.querySelector('.status-text') as HTMLElement;
+      const isUa = el.closest('[lang="uk"]') || document.documentElement.lang === 'uk';
+
+      // Closed day (null) or outside hours
+      let isOpen = false;
+      if (todayHours) {
+        const [openH, openM] = todayHours.open.split(':').map(Number);
+        const [closeH, closeM] = todayHours.close.split(':').map(Number);
+        const openMinutes = openH * 60 + openM;
+        const closeMinutes = closeH * 60 + closeM;
+        isOpen = currentMinutes >= openMinutes && currentMinutes < closeMinutes;
+      }
 
       if (dot && text) {
         if (isOpen) {
@@ -102,17 +113,13 @@ function formatTime(time24: string): string {
           dot.classList.add('bg-green-500');
           text.classList.remove('text-warm-400', 'text-warm-500', 'text-red-500');
           text.classList.add('text-green-600');
-          text.textContent = el.closest('[lang="uk"]') || document.documentElement.lang === 'uk'
-            ? 'Зараз відчинено'
-            : 'Open now';
+          text.textContent = isUa ? 'Зараз відчинено' : 'Open now';
         } else {
           dot.classList.remove('bg-warm-400', 'bg-green-500');
           dot.classList.add('bg-red-400');
           text.classList.remove('text-warm-400', 'text-warm-500', 'text-green-600');
           text.classList.add('text-red-500');
-          text.textContent = el.closest('[lang="uk"]') || document.documentElement.lang === 'uk'
-            ? 'Зараз зачинено'
-            : 'Closed now';
+          text.textContent = isUa ? 'Зараз зачинено' : 'Closed now';
         }
       }
 
@@ -129,6 +136,5 @@ function formatTime(time24: string): string {
   }
 
   document.addEventListener('DOMContentLoaded', updateHoursStatus);
-  // Update every minute
   setInterval(updateHoursStatus, 60_000);
 </script>

@@ -1,5 +1,6 @@
 {
   "name": "ColorEat",
+  "legalName": "ColorEat Cafe",
   "tagline": {
     "en": "A piece of Ukraine in Oakville",
     "ua": "Шматочок України в Оквіллі"
@@ -12,12 +13,31 @@
     "en": "Cozy and atmospheric café offering a fusion of European and Ukrainian cuisine with a modern twist",
     "ua": "Затишне й атмосферне кафе з поєднанням європейської та української кухні з сучасним підходом"
   },
-  "address": "363 Kerr St, Oakville, ON L6K 3B9",
+  "cuisine": "Ukrainian",
+  "address": {
+    "full": "363 Kerr St, Oakville, ON L6K 3B9",
+    "street": "363 Kerr St",
+    "city": "Oakville",
+    "province": "ON",
+    "postalCode": "L6K 3B9",
+    "country": "CA"
+  },
+  "coordinates": {
+    "lat": 43.4456,
+    "lng": -79.6799
+  },
+  "googleMapsUrl": "https://www.google.com/maps/place/ColorEat/@43.4456,-79.6799,17z/",
   "phone": "(289) 400-4695",
   "hours": {
-    "en": "Open daily until 8 p.m.",
-    "ua": "Щодня до 20:00"
+    "monday":    { "open": "11:00", "close": "20:00" },
+    "tuesday":   { "open": "11:00", "close": "20:00" },
+    "wednesday": { "open": "11:00", "close": "20:00" },
+    "thursday":  { "open": "11:00", "close": "20:00" },
+    "friday":    { "open": "11:00", "close": "21:00" },
+    "saturday":  { "open": "10:00", "close": "21:00" },
+    "sunday":    { "open": "10:00", "close": "20:00" }
   },
+  "timezone": "America/Toronto",
   "services": {
     "dineIn": true,
     "takeout": true,

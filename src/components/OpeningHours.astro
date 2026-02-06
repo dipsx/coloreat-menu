@@ -1,0 +1,134 @@
+---
+import { t, type Locale } from '../i18n/utils';
+import restaurant from '../data/restaurant.json';
+
+interface Props {
+  locale: Locale;
+  compact?: boolean;
+}
+
+const { locale, compact = false } = Astro.props;
+const ui = t(locale);
+
+const dayOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'] as const;
+type DayKey = typeof dayOrder[number];
+
+const hours = restaurant.hours as Record<DayKey, { open: string; close: string }>;
+const dayNames = ui.hours.days as Record<DayKey, string>;
+const dayNamesShort = ui.hours.daysShort as Record<DayKey, string>;
+
+function formatTime(time24: string): string {
+  const [h, m] = time24.split(':').map(Number);
+  if (locale === 'ua') return time24;
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const h12 = h % 12 || 12;
+  return `${h12}:${m.toString().padStart(2, '0')} ${ampm}`;
+}
+---
+
+{compact ? (
+  <!-- Compact: just show today's hours (used in footer) -->
+  <div class="opening-hours-compact text-sm" data-timezone={restaurant.timezone} data-hours={JSON.stringify(hours)}>
+    <div class="flex items-center gap-2">
+      <span class="status-dot w-2 h-2 rounded-full bg-warm-400 shrink-0"></span>
+      <span class="status-text text-warm-400">{ui.hours.closedNow}</span>
+    </div>
+  </div>
+) : (
+  <!-- Full: show weekly schedule -->
+  <div class="opening-hours-full" data-timezone={restaurant.timezone} data-hours={JSON.stringify(hours)}>
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-warm-800 font-[Playfair_Display]">{ui.hours.title}</h3>
+      <div class="flex items-center gap-2">
+        <span class="status-dot w-2.5 h-2.5 rounded-full bg-warm-400 shrink-0"></span>
+        <span class="status-text text-sm font-medium text-warm-500">{ui.hours.closedNow}</span>
+      </div>
+    </div>
+    <ul class="space-y-1.5">
+      {dayOrder.map((day, i) => (
+        <li
+          class="flex justify-between items-center px-3 py-2 rounded-lg text-sm transition-colors"
+          data-day-index={i}
+        >
+          <span class="font-medium text-warm-700">
+            <span class="hidden sm:inline">{dayNames[day]}</span>
+            <span class="sm:hidden">{dayNamesShort[day]}</span>
+          </span>
+          <span class="text-warm-600 tabular-nums">
+            {formatTime(hours[day].open)} – {formatTime(hours[day].close)}
+          </span>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<script>
+  function updateHoursStatus() {
+    const els = document.querySelectorAll('[data-timezone]');
+    els.forEach(el => {
+      const tz = (el as HTMLElement).dataset.timezone!;
+      const hours = JSON.parse((el as HTMLElement).dataset.hours!);
+      const now = new Date();
+      const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz,
+        weekday: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      });
+      const parts = formatter.formatToParts(now);
+      const weekday = parts.find(p => p.type === 'weekday')!.value.toLowerCase();
+      const hour = parseInt(parts.find(p => p.type === 'hour')!.value);
+      const minute = parseInt(parts.find(p => p.type === 'minute')!.value);
+      const currentMinutes = hour * 60 + minute;
+
+      const todayHours = hours[weekday];
+      if (!todayHours) return;
+
+      const [openH, openM] = todayHours.open.split(':').map(Number);
+      const [closeH, closeM] = todayHours.close.split(':').map(Number);
+      const openMinutes = openH * 60 + openM;
+      const closeMinutes = closeH * 60 + closeM;
+
+      const isOpen = currentMinutes >= openMinutes && currentMinutes < closeMinutes;
+
+      const dot = el.querySelector('.status-dot') as HTMLElement;
+      const text = el.querySelector('.status-text') as HTMLElement;
+
+      if (dot && text) {
+        if (isOpen) {
+          dot.classList.remove('bg-warm-400', 'bg-red-400');
+          dot.classList.add('bg-green-500');
+          text.classList.remove('text-warm-400', 'text-warm-500', 'text-red-500');
+          text.classList.add('text-green-600');
+          text.textContent = el.closest('[lang="uk"]') || document.documentElement.lang === 'uk'
+            ? 'Зараз відчинено'
+            : 'Open now';
+        } else {
+          dot.classList.remove('bg-warm-400', 'bg-green-500');
+          dot.classList.add('bg-red-400');
+          text.classList.remove('text-warm-400', 'text-warm-500', 'text-green-600');
+          text.classList.add('text-red-500');
+          text.textContent = el.closest('[lang="uk"]') || document.documentElement.lang === 'uk'
+            ? 'Зараз зачинено'
+            : 'Closed now';
+        }
+      }
+
+      // Highlight today's row in full view
+      const dayIndex = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'].indexOf(weekday);
+      el.querySelectorAll('[data-day-index]').forEach((row) => {
+        const idx = parseInt((row as HTMLElement).dataset.dayIndex!);
+        if (idx === dayIndex) {
+          row.classList.add('bg-brand-50', 'font-semibold');
+          row.querySelector('span')?.classList.add('text-brand-800');
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', updateHoursStatus);
+  // Update every minute
+  setInterval(updateHoursStatus, 60_000);
+</script>

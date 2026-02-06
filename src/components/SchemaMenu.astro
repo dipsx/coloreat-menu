@@ -1,0 +1,71 @@
+---
+import { l, type Locale } from '../i18n/utils';
+
+interface MenuItemData {
+  id: string;
+  name: { en: string; ua: string };
+  description: { en: string; ua: string };
+  price: number;
+  dietary: string[];
+}
+
+interface CategoryData {
+  id: string;
+  title: { en: string; ua: string };
+  items: MenuItemData[];
+}
+
+interface MenuData {
+  id: string;
+  title: { en: string; ua: string };
+  categories: CategoryData[];
+}
+
+interface Props {
+  menus: MenuData[];
+  locale: Locale;
+}
+
+const { menus, locale } = Astro.props;
+
+const dietaryMap: Record<string, string> = {
+  'vegetarian': 'https://schema.org/VegetarianDiet',
+  'gluten-free': 'https://schema.org/GlutenFreeDiet',
+  'dairy-free': 'https://schema.org/DairyFree',
+};
+
+const menuSections = menus.flatMap(menu =>
+  menu.categories.map(cat => ({
+    '@type': 'MenuSection',
+    'name': l(cat.title, locale),
+    'hasMenuItem': cat.items.map(item => {
+      const menuItem: Record<string, unknown> = {
+        '@type': 'MenuItem',
+        'name': l(item.name, locale),
+        'offers': {
+          '@type': 'Offer',
+          'price': item.price.toFixed(2),
+          'priceCurrency': 'CAD',
+        },
+      };
+      const desc = l(item.description, locale);
+      if (desc) menuItem['description'] = desc;
+      if (item.dietary.length > 0) {
+        menuItem['suitableForDiet'] = item.dietary
+          .filter(d => dietaryMap[d])
+          .map(d => dietaryMap[d]);
+      }
+      return menuItem;
+    }),
+  }))
+);
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  'name': locale === 'en' ? 'ColorEat Cafe Menu' : 'Меню ColorEat Cafe',
+  'hasMenuSection': menuSections,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

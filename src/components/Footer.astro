@@ -1,5 +1,6 @@
 ---
 import { t, type Locale } from '../i18n/utils';
+import OpeningHours from './OpeningHours.astro';
 import restaurant from '../data/restaurant.json';
 
 interface Props {
@@ -18,14 +19,14 @@ const year = new Date().getFullYear();
       <div>
         <h3 class="text-sm font-semibold uppercase tracking-wider text-warm-400 mb-3">{ui.footer.visitUs}</h3>
         <p class="text-warm-300 text-sm leading-relaxed">
-          {restaurant.address}
+          {restaurant.address.full}
         </p>
         <a href={`tel:${restaurant.phone.replace(/[^\d+]/g, '')}`} class="text-brand-400 hover:text-brand-300 text-sm mt-1 inline-block transition-colors">
           {restaurant.phone}
         </a>
-        <p class="text-warm-400 text-sm mt-1">
-          {locale === 'en' ? restaurant.hours.en : restaurant.hours.ua}
-        </p>
+        <div class="mt-2">
+          <OpeningHours locale={locale} compact={true} />
+        </div>
       </div>
 
       <!-- Follow Us -->

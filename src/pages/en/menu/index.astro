@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import MenuSection from '../../../components/MenuSection.astro';
 import CategoryNav from '../../../components/CategoryNav.astro';
 import PdfDownload from '../../../components/PdfDownload.astro';
+import SchemaMenu from '../../../components/SchemaMenu.astro';
 import { t } from '../../../i18n/utils';
 import menuMain from '../../../data/menu-main.json';
 import menuBreakfast from '../../../data/menu-breakfast.json';
@@ -19,9 +20,13 @@ const navItems = [
   { id: menuMain.id, label: menuMain.title },
   { id: menuDrinks.id, label: menuDrinks.title },
 ];
+
+const allMenus = [menuBreakfast, menuCrepes, menuMain, menuDrinks];
 ---
 
-<Layout title={ui.menu.title} locale={locale}>
+<Layout title={ui.menu.title} locale={locale} description="Full menu of ColorEat Cafe — Ukrainian cuisine in Oakville. Breakfast, crepes, soups, main courses, drinks and desserts.">
+  <SchemaMenu menus={allMenus} locale={locale} slot="head" />
+
   <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
     <!-- Page title -->
     <div class="text-center mb-8">
@@ -80,4 +85,20 @@ const navItems = [
       <PdfDownload locale={locale} />
     </div>
   </div>
+
+  <!-- Scroll reveal script -->
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </Layout>

@@ -28,11 +28,46 @@
     "gluten-free": "Без глютену",
     "dairy-free": "Без молока"
   },
+  "hours": {
+    "title": "Години роботи",
+    "openNow": "Зараз відчинено",
+    "closedNow": "Зараз зачинено",
+    "opensAt": "Відкривається о",
+    "closesAt": "Закривається о",
+    "days": {
+      "monday": "Понеділок",
+      "tuesday": "Вівторок",
+      "wednesday": "Середа",
+      "thursday": "Четвер",
+      "friday": "П'ятниця",
+      "saturday": "Субота",
+      "sunday": "Неділя"
+    },
+    "daysShort": {
+      "monday": "Пн",
+      "tuesday": "Вт",
+      "wednesday": "Ср",
+      "thursday": "Чт",
+      "friday": "Пт",
+      "saturday": "Сб",
+      "sunday": "Нд"
+    }
+  },
+  "map": {
+    "getDirections": "Як дістатися",
+    "openInMaps": "Відкрити в Google Maps"
+  },
   "footer": {
     "visitUs": "Відвідайте нас",
     "followUs": "Слідкуйте за нами",
     "orderDelivery": "Замовити доставку",
     "rights": "Усі права захищені"
+  },
+  "notFound": {
+    "title": "Сторінку не знайдено",
+    "message": "Вибачте, сторінка, яку ви шукаєте, не існує або була переміщена.",
+    "goHome": "На головну",
+    "viewMenu": "Переглянути меню"
   },
   "language": {
     "en": "English",

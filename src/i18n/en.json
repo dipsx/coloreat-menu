@@ -28,11 +28,46 @@
     "gluten-free": "GF",
     "dairy-free": "DF"
   },
+  "hours": {
+    "title": "Opening Hours",
+    "openNow": "Open now",
+    "closedNow": "Closed now",
+    "opensAt": "Opens at",
+    "closesAt": "Closes at",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    },
+    "daysShort": {
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
+    }
+  },
+  "map": {
+    "getDirections": "Get Directions",
+    "openInMaps": "Open in Google Maps"
+  },
   "footer": {
     "visitUs": "Visit Us",
     "followUs": "Follow Us",
     "orderDelivery": "Order Delivery",
     "rights": "All rights reserved"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "message": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "viewMenu": "View Menu"
   },
   "language": {
     "en": "English",

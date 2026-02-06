@@ -1,0 +1,61 @@
+---
+import restaurant from '../data/restaurant.json';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const dayMap: Record<string, string> = {
+  monday: 'Monday',
+  tuesday: 'Tuesday',
+  wednesday: 'Wednesday',
+  thursday: 'Thursday',
+  friday: 'Friday',
+  saturday: 'Saturday',
+  sunday: 'Sunday',
+};
+
+const hours = restaurant.hours as Record<string, { open: string; close: string }>;
+
+const openingHours = Object.entries(hours).map(([day, h]) => ({
+  '@type': 'OpeningHoursSpecification',
+  dayOfWeek: dayMap[day],
+  opens: h.open,
+  closes: h.close,
+}));
+
+const siteUrl = Astro.site ? new URL(base, Astro.site).href : '';
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  'name': restaurant.legalName,
+  'description': restaurant.description[locale],
+  'servesCuisine': restaurant.cuisine,
+  'telephone': restaurant.phone,
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': restaurant.address.street,
+    'addressLocality': restaurant.address.city,
+    'addressRegion': restaurant.address.province,
+    'postalCode': restaurant.address.postalCode,
+    'addressCountry': restaurant.address.country,
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': restaurant.coordinates.lat,
+    'longitude': restaurant.coordinates.lng,
+  },
+  'url': siteUrl,
+  'hasMenu': `${siteUrl}/${locale}/menu/`,
+  'sameAs': [restaurant.social.instagram],
+  'openingHoursSpecification': openingHours,
+  'priceRange': '$$',
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

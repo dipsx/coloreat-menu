@@ -1,15 +1,17 @@
 ---
 // Static redirect to /en/ (default locale)
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const target = `${base}/en/`;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/en/" />
-    <link rel="canonical" href="/en/" />
+    <meta http-equiv="refresh" content={`0;url=${target}`} />
+    <link rel="canonical" href={target} />
     <title>ColorEat Cafe</title>
   </head>
   <body>
-    <p>Redirecting to <a href="/en/">ColorEat menu</a>...</p>
+    <p>Redirecting to <a href={target}>ColorEat menu</a>...</p>
   </body>
 </html>

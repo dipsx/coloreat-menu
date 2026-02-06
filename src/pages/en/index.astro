@@ -1,11 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import DeliveryLinks from '../../components/DeliveryLinks.astro';
-import { t } from '../../i18n/utils';
+import { t, getLocalizedPath } from '../../i18n/utils';
 import restaurant from '../../data/restaurant.json';
 
 const locale = 'en';
 const ui = t(locale);
+const menuPath = getLocalizedPath('/menu/', locale);
 ---
 
 <Layout title={ui.nav.home} locale={locale}>
@@ -26,7 +27,7 @@ const ui = t(locale);
         {restaurant.description.en}
       </p>
       <a
-        href="/en/menu/"
+        href={menuPath}
         class="inline-flex items-center gap-2 px-8 py-3.5 bg-white text-brand-800 font-bold rounded-full hover:bg-brand-50 transition-colors shadow-lg hover:shadow-xl text-lg"
       >
         {ui.home.viewMenu}

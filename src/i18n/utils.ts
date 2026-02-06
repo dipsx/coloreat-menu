@@ -16,7 +16,8 @@ export function t(locale: Locale): typeof en {
 }
 
 export function getLocalizedPath(path: string, locale: Locale): string {
-  return `/${locale}${path}`;
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  return `${base}/${locale}${path}`;
 }
 
 export function getAlternateLocale(locale: Locale): Locale {

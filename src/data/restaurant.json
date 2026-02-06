@@ -26,16 +26,28 @@
     "lat": 43.4456,
     "lng": -79.6799
   },
-  "googleMapsUrl": "https://www.google.com/maps/place/ColorEat/@43.4456,-79.6799,17z/",
+  "googleMapsUrl": "https://maps.app.goo.gl/3SU8Yq9DEQBDUUQY9",
   "phone": "(289) 400-4695",
   "hours": {
-    "monday":    null,
-    "tuesday":   null,
+    "monday": null,
+    "tuesday": null,
     "wednesday": null,
-    "thursday":  { "open": "12:00", "close": "20:00" },
-    "friday":    { "open": "12:00", "close": "21:00" },
-    "saturday":  { "open": "12:00", "close": "21:00" },
-    "sunday":    { "open": "12:00", "close": "20:00" }
+    "thursday": {
+      "open": "12:00",
+      "close": "20:00"
+    },
+    "friday": {
+      "open": "12:00",
+      "close": "21:00"
+    },
+    "saturday": {
+      "open": "12:00",
+      "close": "21:00"
+    },
+    "sunday": {
+      "open": "12:00",
+      "close": "20:00"
+    }
   },
   "timezone": "America/Toronto",
   "services": {

@@ -9,7 +9,7 @@ interface Props {
 const { locale } = Astro.props;
 const ui = t(locale);
 
-const mapQuery = encodeURIComponent(`${restaurant.address.full}`);
+const mapQuery = encodeURIComponent(`ColorEat, ${restaurant.address.full}`);
 const embedUrl = `https://www.google.com/maps?q=${mapQuery}&output=embed`;
 ---
 

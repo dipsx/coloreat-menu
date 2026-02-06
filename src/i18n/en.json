@@ -6,8 +6,9 @@
   },
   "home": {
     "description": "Authentic Ukrainian cuisine in Oakville. Fresh ingredients, homemade flavours.",
-    "heroTitle": "Welcome to ColorEat",
-    "heroSubtitle": "A piece of Ukraine in Oakville",
+    "heroTitle": "Ukrainian restaurant",
+    "heroTagline": "The name ColorEat is inspired by the Ukrainian word \"колорит\", which stands for warmth, authenticity, and the character of our heritage.",
+    "heroSubtagline": "We created this restaurant to share the colours and comfort of Ukrainian home cooking with our guests. Here, every meal feels like family.",
     "viewMenu": "View Menu",
     "services": "Our Services",
     "dineIn": "Dine-in",

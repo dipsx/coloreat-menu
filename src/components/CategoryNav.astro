@@ -14,12 +14,12 @@ interface Props {
 const { items, locale } = Astro.props;
 ---
 
-<nav class="sticky top-[49px] sm:top-[57px] z-40 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200 -mx-4 px-4 overflow-x-auto scrollbar-hide">
-  <div class="flex gap-0.5 sm:gap-1 py-1.5 sm:py-2 min-w-max">
+<nav class="sticky top-[53px] sm:top-[60px] z-40 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200 -mx-4 px-4 overflow-x-auto scrollbar-hide">
+  <div class="flex gap-1 sm:gap-2 py-2 min-w-max">
     {items.map((item) => (
       <a
         href={`#${item.id}`}
-        class="px-3 sm:px-4 py-2 sm:py-2 text-[13px] sm:text-sm font-medium text-warm-600 hover:text-brand-700 active:bg-brand-50 sm:hover:bg-brand-50 rounded-full transition-colors whitespace-nowrap"
+        class="px-3 sm:px-4 py-2 text-sm font-medium text-warm-600 hover:text-brand-700 active:text-brand-800 transition-colors whitespace-nowrap relative after:absolute after:bottom-1 after:left-3 after:right-3 after:h-[1px] after:bg-brand-700 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left"
         data-nav-link={item.id}
       >
         {l(item.label, locale)}
@@ -54,9 +54,13 @@ const { items, locale } = Astro.props;
       (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            links.forEach(l => l.classList.remove('bg-brand-100', 'text-brand-800'));
+            links.forEach(l => {
+              l.classList.remove('text-brand-700', 'font-semibold');
+              l.classList.add('text-warm-600');
+            });
             const activeLink = document.querySelector(`[data-nav-link="${entry.target.id}"]`);
-            activeLink?.classList.add('bg-brand-100', 'text-brand-800');
+            activeLink?.classList.remove('text-warm-600');
+            activeLink?.classList.add('text-brand-700', 'font-semibold');
           }
         });
       },

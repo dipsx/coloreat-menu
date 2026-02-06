@@ -44,12 +44,12 @@ const { menuTitle, categories, locale, menuId, featured } = Astro.props;
 ---
 
 <section id={menuId} class="scroll-mt-24 sm:scroll-mt-28 reveal">
-  <!-- Section header with decorative divider — calligraphic style like PDF -->
-  <div class="mb-6">
+  <!-- Section header — serif font matching PDF -->
+  <div class="mb-8">
     <div class="ornate-divider">
-      <span class="text-gold-400 text-lg">&#10043;</span>
+      <span class="text-gold-400 text-sm">&#9670;</span>
     </div>
-    <h2 class="text-3xl sm:text-4xl font-normal font-[Great_Vibes] text-brand-800 text-center tracking-wide">
+    <h2 class="text-2xl sm:text-3xl font-serif font-semibold text-brand-700 text-center tracking-[0.05em]">
       {l(menuTitle, locale)}
     </h2>
     <div class="ornate-divider">
@@ -57,37 +57,39 @@ const { menuTitle, categories, locale, menuId, featured } = Astro.props;
     </div>
   </div>
 
-  {/* Featured item (e.g., tasting set) */}
+  {/* Featured item — "Discover Ukrainian Flavours" style from PDF */}
   {featured && (
-    <div class="mb-8 bg-gradient-to-br from-brand-50 to-warm-50 border-2 border-brand-200 rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
-      <!-- Decorative corner ornaments -->
-      <div class="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-brand-300 rounded-tl-lg opacity-50"></div>
-      <div class="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-brand-300 rounded-tr-lg opacity-50"></div>
-      <div class="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-brand-300 rounded-bl-lg opacity-50"></div>
-      <div class="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-brand-300 rounded-br-lg opacity-50"></div>
-      <span class="inline-block text-xs font-semibold uppercase tracking-widest text-brand-600 mb-2">
-        {featured.subtitle ? l(featured.subtitle, locale) : '★'}
-      </span>
-      <h3 class="text-2xl sm:text-3xl font-normal font-[Great_Vibes] text-brand-800 mb-2">
+    <div class="mb-10 bg-white border-[3px] border-double border-brand-700 rounded-lg p-6 sm:p-8 text-center relative">
+      <!-- Corner ornaments matching PDF -->
+      <div class="absolute top-3 left-3 w-5 h-5 border-t-[2px] border-l-[2px] border-gold-400 rounded-tl-sm"></div>
+      <div class="absolute top-3 right-3 w-5 h-5 border-t-[2px] border-r-[2px] border-gold-400 rounded-tr-sm"></div>
+      <div class="absolute bottom-3 left-3 w-5 h-5 border-b-[2px] border-l-[2px] border-gold-400 rounded-bl-sm"></div>
+      <div class="absolute bottom-3 right-3 w-5 h-5 border-b-[2px] border-r-[2px] border-gold-400 rounded-br-sm"></div>
+
+      <h3 class="text-2xl sm:text-3xl font-serif font-semibold text-brand-700 mb-1 tracking-wide">
         {l(featured.name, locale)}
       </h3>
-      <p class="text-sm text-warm-600 mb-3 max-w-lg mx-auto leading-relaxed italic">
+      {featured.subtitle && (
+        <span class="inline-block text-xs font-medium uppercase tracking-widest text-warm-500 mb-3">
+          {l(featured.subtitle, locale)}
+        </span>
+      )}
+      <p class="text-sm text-warm-600 mb-4 max-w-md mx-auto leading-relaxed italic">
         {l(featured.description, locale)}
       </p>
-      <span class="inline-block text-2xl font-bold text-brand-700">${featured.price.toFixed(0)}</span>
+      <span class="inline-block text-2xl font-display font-bold text-brand-700 tracking-[0.02em]">${featured.price.toFixed(0)}</span>
     </div>
   )}
 
   {categories.map((category) => (
     <div class="mb-8 last:mb-0" id={category.id}>
       {categories.length > 1 && (
-        <div class="mb-3 pb-2 border-b border-warm-200">
-          <h3 class="text-lg font-semibold text-brand-700 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-gold-400 shrink-0"></span>
+        <div class="mb-4 pb-2 border-b border-warm-200">
+          <h3 class="text-lg font-serif font-semibold text-brand-700 tracking-[0.03em]">
             {l(category.title, locale)}
           </h3>
           {category.note && (
-            <p class="text-xs text-warm-500 italic mt-1 ml-3.5">{l(category.note, locale)}</p>
+            <p class="text-xs text-warm-500 italic mt-1">{l(category.note, locale)}</p>
           )}
         </div>
       )}

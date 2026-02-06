@@ -1,44 +1,49 @@
 @import "tailwindcss";
 
 @theme {
-  /* ColorEat brand colors — burgundy/maroon to match menu PDF */
+  /* ===== ColorEat brand palette — matched to PDF menu ===== */
+
+  /* Primary — burgundy/deep red (dish names, section headers, accents) */
   --color-brand-50: #fdf2f4;
   --color-brand-100: #fce7ec;
   --color-brand-200: #f9cfd9;
   --color-brand-300: #f4a8be;
   --color-brand-400: #ec7a9c;
-  --color-brand-500: #d43d6a;
-  --color-brand-600: #b62a55;
-  --color-brand-700: #961e45;
-  --color-brand-800: #7d1a3a;
-  --color-brand-900: #6a1632;
+  --color-brand-500: #c4264e;
+  --color-brand-600: #a11d40;
+  --color-brand-700: #8B1538;
+  --color-brand-800: #6B1029;
+  --color-brand-900: #4d0c1e;
 
-  /* Gold accent (sunflower) */
+  /* Gold accent — sunflower petals, highlights */
   --color-gold-50: #fef9f0;
   --color-gold-100: #fdf0d9;
   --color-gold-200: #fae0b2;
   --color-gold-300: #f6c97a;
-  --color-gold-400: #f1a83b;
-  --color-gold-500: #d4930e;
-  --color-gold-600: #b07a0a;
+  --color-gold-400: #D4A84B;
+  --color-gold-500: #C49A3A;
+  --color-gold-600: #a07c2e;
 
-  /* Warm neutrals */
-  --color-warm-50: #faf8f5;
-  --color-warm-100: #f3efe8;
+  /* Warm neutrals — backgrounds, body text */
+  --color-warm-50: #FDF8F3;
+  --color-warm-100: #F5EDE4;
   --color-warm-200: #e6ddd0;
   --color-warm-300: #d5c7b3;
-  --color-warm-400: #c2aa91;
-  --color-warm-500: #b4947a;
-  --color-warm-600: #a7836c;
-  --color-warm-700: #8b6b5a;
-  --color-warm-800: #72594c;
-  --color-warm-900: #5e4a40;
+  --color-warm-400: #C9A86C;
+  --color-warm-500: #8A8A8A;
+  --color-warm-600: #5A5A5A;
+  --color-warm-700: #3d3d3d;
+  --color-warm-800: #2D2D2D;
+  --color-warm-900: #1a1a1a;
 
-  /* Accent (Ukrainian blue) */
-  --color-accent-500: #2563eb;
-  --color-accent-600: #1d4ed8;
+  /* Logo colors */
+  --color-logo-blue: #2E5C8A;
+  --color-logo-brown: #5C3D2E;
 
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  /* Font stacks */
+  --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-display: 'Playfair Display', 'Georgia', serif;
 }
 
 /* Smooth scroll */
@@ -54,19 +59,18 @@ body {
 /* Selection color */
 ::selection {
   background-color: #fce7ec;
-  color: #5e4a40;
+  color: #2D2D2D;
 }
 
 /* Focus visible for accessibility */
 :focus-visible {
-  outline: 2px solid #961e45;
+  outline: 2px solid #8B1538;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* ===== Animations ===== */
 
-/* Hero entrance animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -79,26 +83,26 @@ body {
 }
 
 .animate-fade-in-up {
-  animation: fadeInUp 0.7s ease-out both;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) both;
 }
 
 .animate-fade-in-up-delay-1 {
-  animation: fadeInUp 0.7s ease-out 0.15s both;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.15s both;
 }
 
 .animate-fade-in-up-delay-2 {
-  animation: fadeInUp 0.7s ease-out 0.3s both;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s both;
 }
 
 .animate-fade-in-up-delay-3 {
-  animation: fadeInUp 0.7s ease-out 0.45s both;
+  animation: fadeInUp 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0.45s both;
 }
 
 /* Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(16px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal.revealed {
@@ -106,7 +110,9 @@ body {
   transform: translateY(0);
 }
 
-/* Decorative divider */
+/* ===== Decorative Elements ===== */
+
+/* Section divider — thin line with centered ornament */
 .section-divider {
   display: flex;
   align-items: center;
@@ -119,48 +125,7 @@ body {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, #d5c7b3, transparent);
-}
-
-.section-divider-icon {
-  color: #961e45;
-  font-size: 0.75rem;
-}
-
-/* Ukrainian vyshyvanka-inspired border pattern */
-.vyshyvanka-border {
-  position: relative;
-}
-
-/* Hidden on mobile, visible on tablet+ */
-.vyshyvanka-border::before,
-.vyshyvanka-border::after {
-  content: none;
-}
-
-/* Show borders only on screens wide enough (640px+) */
-@media (min-width: 640px) {
-  .vyshyvanka-border::before,
-  .vyshyvanka-border::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    opacity: 0.2;
-    background-image: url("data:image/svg+xml,%3Csvg width='24' height='48' viewBox='0 0 24 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0L24 12L12 24L0 12Z' fill='%237d1a3a'/%3E%3Cpath d='M12 24L24 36L12 48L0 36Z' fill='%232563eb'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23f1a83b' transform='rotate(45 12 12)'/%3E%3Crect x='8' y='32' width='8' height='8' fill='%23f1a83b' transform='rotate(45 12 36)'/%3E%3C/svg%3E");
-    background-repeat: repeat-y;
-    background-size: 40px 80px;
-    pointer-events: none;
-  }
-
-  .vyshyvanka-border::before {
-    left: 0;
-  }
-
-  .vyshyvanka-border::after {
-    right: 0;
-  }
+  background: linear-gradient(to right, transparent, #C9A86C, transparent);
 }
 
 /* Ornate section divider for menu */
@@ -177,10 +142,58 @@ body {
   content: '';
   flex: 1;
   max-width: 120px;
-  height: 2px;
-  background: linear-gradient(to var(--dir, right), #7d1a3a, transparent);
+  height: 1px;
+  background: linear-gradient(to var(--dir, right), #8B1538, transparent);
 }
 
 .ornate-divider::after {
   --dir: left;
+}
+
+/* Subtle embroidery pattern background */
+.pattern-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238B1538' fill-opacity='0.03'%3E%3Cpath d='M30 5L35 10L30 15L25 10ZM5 30L10 35L5 40L0 35ZM55 30L60 35L55 40L50 35ZM30 45L35 50L30 55L25 50Z'/%3E%3Cpath d='M15 15L20 20L15 25L10 20ZM45 15L50 20L45 25L40 20ZM15 35L20 40L15 45L10 40ZM45 35L50 40L45 45L40 40Z' opacity='.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Decorative vyshyvanka border — tablet+ only */
+.vyshyvanka-border {
+  position: relative;
+}
+
+.vyshyvanka-border::before,
+.vyshyvanka-border::after {
+  content: none;
+}
+
+@media (min-width: 640px) {
+  .vyshyvanka-border::before,
+  .vyshyvanka-border::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    opacity: 0.12;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='48' viewBox='0 0 24 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0L24 12L12 24L0 12Z' fill='%238B1538'/%3E%3Cpath d='M12 24L24 36L12 48L0 36Z' fill='%232E5C8A'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%23D4A84B' transform='rotate(45 12 12)'/%3E%3Crect x='8' y='32' width='8' height='8' fill='%23D4A84B' transform='rotate(45 12 36)'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-size: 32px 64px;
+    pointer-events: none;
+  }
+
+  .vyshyvanka-border::before {
+    left: 0;
+  }
+
+  .vyshyvanka-border::after {
+    right: 0;
+  }
+}
+
+/* Menu item hover lift */
+.dish-card {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dish-card:hover {
+  transform: translateY(-2px);
 }

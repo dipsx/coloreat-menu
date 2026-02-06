@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ColorEat - Preview Builds</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FFFBF5; color: #44403c; padding: 2rem; max-width: 800px; margin: 0 auto; }
+    h1 { font-family: 'Playfair Display', Georgia, serif; color: #6F4E37; margin-bottom: 0.5rem; font-size: 1.75rem; }
+    .subtitle { color: #78716c; margin-bottom: 2rem; font-size: 0.9rem; }
+    .build { display: flex; justify-content: space-between; align-items: center; padding: 1rem 1.25rem; margin-bottom: 0.5rem; background: white; border-radius: 0.75rem; border: 1px solid #f5f0eb; transition: border-color 0.2s; }
+    .build:hover { border-color: #6F4E37; }
+    .build-info { display: flex; flex-direction: column; gap: 0.25rem; }
+    .build-date { font-weight: 600; color: #292524; }
+    .build-meta { font-size: 0.8rem; color: #a8a29e; }
+    .build-label { display: inline-block; background: #6F4E37; color: white; padding: 0.15rem 0.5rem; border-radius: 999px; font-size: 0.75rem; margin-left: 0.5rem; }
+    a.build-link { color: #6F4E37; text-decoration: none; font-weight: 500; white-space: nowrap; }
+    a.build-link:hover { text-decoration: underline; }
+    .back { display: inline-block; margin-bottom: 1.5rem; color: #6F4E37; text-decoration: none; font-size: 0.9rem; }
+    .back:hover { text-decoration: underline; }
+    .empty { text-align: center; padding: 3rem; color: #a8a29e; }
+  </style>
+</head>
+<body>
+  <a class="back" href="../en/">&larr; Back to site</a>
+  <h1>Preview Builds</h1>
+  <p class="subtitle">Development previews from the main branch</p>
+  <div id="builds"></div>
+  <script>
+const builds = [
+  { stamp: '20260206_0113', commit: 'c257544', label: '', date: '2026-02-06 01:13 UTC' },
+];
+    const container = document.getElementById('builds');
+    if (builds.length === 0) {
+      container.innerHTML = '<p class="empty">No preview builds yet.</p>';
+    } else {
+      builds.forEach(b => {
+        const labelHtml = b.label ? `<span class="build-label">${b.label}</span>` : '';
+        const commitHtml = b.commit ? ` &middot; <code>${b.commit}</code>` : '';
+        const dateHtml = b.date || b.stamp.replace('_', ' ');
+        container.innerHTML += `
+          <div class="build">
+            <div class="build-info">
+              <span class="build-date">${dateHtml}${labelHtml}</span>
+              <span class="build-meta">${b.stamp}${commitHtml}</span>
+            </div>
+            <a class="build-link" href="${b.stamp}/en/">Open &rarr;</a>
+          </div>`;
+      });
+    }
+  </script>
+</body>
+</html>

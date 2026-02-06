@@ -1,53 +1,502 @@
 {
-  "id": "drinks-desserts",
+  "id": "drinks",
   "title": {
-    "en": "Drinks & Desserts",
-    "ua": "Напої та десерти"
+    "en": "Drinks",
+    "ua": "Напої"
   },
   "categories": [
     {
-      "id": "hot-drinks",
+      "id": "wines-sparkling",
       "title": {
-        "en": "Hot Drinks",
-        "ua": "Гарячі напої"
+        "en": "Sparkling Wines",
+        "ua": "Ігристі вина"
+      },
+      "items": [
+        {
+          "id": "prosecco-mionetto",
+          "name": { "en": "Prosecco Mionetto", "ua": "Просекко Mionetto" },
+          "description": { "en": "Brut, Italy", "ua": "Брют, Італія" },
+          "variants": [{ "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 51 }],
+          "dietary": []
+        },
+        {
+          "id": "la-vieille-ferme",
+          "name": { "en": "La Vieille Ferme", "ua": "La Vieille Ferme" },
+          "description": { "en": "Brut, France", "ua": "Брют, Франція" },
+          "variants": [{ "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 40 }],
+          "dietary": []
+        },
+        {
+          "id": "veuve-clicquot",
+          "name": { "en": "Champagne Veuve Clicquot", "ua": "Шампанське Veuve Clicquot" },
+          "description": { "en": "Brut, France", "ua": "Брют, Франція" },
+          "variants": [{ "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 150 }],
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "wines-white",
+      "title": {
+        "en": "White Wines",
+        "ua": "Білі вина"
+      },
+      "priceColumns": { "en": ["5 oz", "9 oz", "Bottle"], "ua": ["150 мл", "270 мл", "Пляшка"] },
+      "items": [
+        {
+          "id": "house-white",
+          "name": { "en": "House Wine", "ua": "Домашнє вино" },
+          "description": { "en": "", "ua": "" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 7 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 10 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "pinot-grigio",
+          "name": { "en": "Pinot Grigio — Cavit Collection", "ua": "Піно Гріджіо — Cavit Collection" },
+          "description": { "en": "Italy", "ua": "Італія" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 9 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 13 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 36 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "riesling",
+          "name": { "en": "Riesling — Henry of Pelham VQA", "ua": "Рислінг — Henry of Pelham VQA" },
+          "description": { "en": "Semi-dry, Ontario", "ua": "Напівсухе, Онтаріо" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 10 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 15 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 41 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "petit-chablis",
+          "name": { "en": "Petit Chablis — William Fèvre", "ua": "Петі Шаблі — William Fèvre" },
+          "description": { "en": "Chardonnay, France", "ua": "Шардоне, Франція" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 18 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 27 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 71 }
+          ],
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "wines-rose",
+      "title": {
+        "en": "Rosé Wines",
+        "ua": "Рожеві вина"
+      },
+      "items": [
+        {
+          "id": "mateus",
+          "name": { "en": "Mateus — Sogrape", "ua": "Mateus — Sogrape" },
+          "description": { "en": "Semi-dry, Portugal", "ua": "Напівсухе, Португалія" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 8 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 12 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 33 }
+          ],
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "wines-red",
+      "title": {
+        "en": "Red Wines",
+        "ua": "Червоні вина"
+      },
+      "items": [
+        {
+          "id": "house-red",
+          "name": { "en": "House Wine", "ua": "Домашнє вино" },
+          "description": { "en": "", "ua": "" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 7 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 10 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "pinot-noir",
+          "name": { "en": "Pinot Noir — Henry of Pelham VQA", "ua": "Піно Нуар — Henry of Pelham VQA" },
+          "description": { "en": "Ontario", "ua": "Онтаріо" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 12 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 16 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 44 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "chianti",
+          "name": { "en": "Chianti — Ruffino DOCG", "ua": "К'янті — Ruffino DOCG" },
+          "description": { "en": "Italy", "ua": "Італія" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 11 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 15 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 41 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "shiraz-cabernet",
+          "name": { "en": "The Pavilion Shiraz-Cabernet — Boschendal", "ua": "The Pavilion Шираз-Каберне — Boschendal" },
+          "description": { "en": "South Africa", "ua": "Південна Африка" },
+          "variants": [
+            { "label": { "en": "5 oz", "ua": "150 мл" }, "price": 9 },
+            { "label": { "en": "9 oz", "ua": "270 мл" }, "price": 12 },
+            { "label": { "en": "Bottle", "ua": "Пляшка" }, "price": 32 }
+          ],
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "beers",
+      "title": {
+        "en": "Beers",
+        "ua": "Пиво"
+      },
+      "items": [
+        {
+          "id": "corona-extra",
+          "name": { "en": "Corona Extra", "ua": "Corona Extra" },
+          "description": { "en": "330 ml", "ua": "330 мл" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "corona-non-alc",
+          "name": { "en": "Corona Non-Alcoholic", "ua": "Corona Безалкогольне" },
+          "description": { "en": "330 ml", "ua": "330 мл" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "molson",
+          "name": { "en": "Canadian Molson", "ua": "Canadian Molson" },
+          "description": { "en": "355 ml", "ua": "355 мл" },
+          "price": 6,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "spirits",
+      "title": {
+        "en": "Spirits",
+        "ua": "Міцні напої"
+      },
+      "note": { "en": "1 oz serving", "ua": "Порція 30 мл" },
+      "items": [
+        {
+          "id": "nemiroff",
+          "name": { "en": "Nemiroff Vodka", "ua": "Горілка Nemiroff" },
+          "description": { "en": "Ukraine", "ua": "Україна" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "absolut",
+          "name": { "en": "Absolut Vodka", "ua": "Горілка Absolut" },
+          "description": { "en": "Sweden", "ua": "Швеція" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "grey-goose",
+          "name": { "en": "Grey Goose Vodka", "ua": "Горілка Grey Goose" },
+          "description": { "en": "France", "ua": "Франція" },
+          "price": 8,
+          "dietary": []
+        },
+        {
+          "id": "crown-royal",
+          "name": { "en": "Crown Royal Whisky", "ua": "Віскі Crown Royal" },
+          "description": { "en": "Canada", "ua": "Канада" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "jameson",
+          "name": { "en": "Jameson Whisky", "ua": "Віскі Jameson" },
+          "description": { "en": "Ireland", "ua": "Ірландія" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "talisker",
+          "name": { "en": "Talisker 10 y.o.", "ua": "Talisker 10 років" },
+          "description": { "en": "Scotland", "ua": "Шотландія" },
+          "price": 15,
+          "dietary": []
+        },
+        {
+          "id": "macallan",
+          "name": { "en": "Macallan 12 Single Malt", "ua": "Macallan 12 Single Malt" },
+          "description": { "en": "Scotland", "ua": "Шотландія" },
+          "price": 19,
+          "dietary": []
+        },
+        {
+          "id": "bacardi-white",
+          "name": { "en": "Bacardi Superior White Rum", "ua": "Ром Bacardi Superior White" },
+          "description": { "en": "", "ua": "" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "bacardi-gold",
+          "name": { "en": "Bacardi Superior Gold Rum", "ua": "Ром Bacardi Superior Gold" },
+          "description": { "en": "", "ua": "" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "zacapa",
+          "name": { "en": "Zacapa 23 y.o. Rum", "ua": "Ром Zacapa 23 роки" },
+          "description": { "en": "", "ua": "" },
+          "price": 16,
+          "dietary": []
+        },
+        {
+          "id": "jose-cuervo",
+          "name": { "en": "Jose Cuervo Silver Tequila", "ua": "Текіла Jose Cuervo Silver" },
+          "description": { "en": "", "ua": "" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "patron",
+          "name": { "en": "Patrón Añejo Tequila", "ua": "Текіла Patrón Añejo" },
+          "description": { "en": "", "ua": "" },
+          "price": 18,
+          "dietary": []
+        },
+        {
+          "id": "tanqueray",
+          "name": { "en": "Tanqueray Gin", "ua": "Джин Tanqueray" },
+          "description": { "en": "", "ua": "" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "courvoisier",
+          "name": { "en": "Courvoisier VS Cognac", "ua": "Коньяк Courvoisier VS" },
+          "description": { "en": "", "ua": "" },
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "st-remy",
+          "name": { "en": "St-Rémy VSOP Brandy", "ua": "Бренді St-Rémy VSOP" },
+          "description": { "en": "", "ua": "" },
+          "price": 7,
+          "dietary": []
+        },
+        {
+          "id": "liqueurs",
+          "name": { "en": "Liqueurs & Bitters", "ua": "Лікери та бітери" },
+          "description": {
+            "en": "Sambuca, Jägermeister, Baileys, Aperol, Campari, Triple Sec, Amaretto, Vermouth",
+            "ua": "Самбука, Єгермайстер, Бейліз, Апероль, Кампарі, Тріпл Сек, Амаретто, Вермут"
+          },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "st-germain",
+          "name": { "en": "St-Germain", "ua": "St-Germain" },
+          "description": { "en": "Elderflower liqueur", "ua": "Лікер з бузини" },
+          "price": 6,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "homemade-infusions",
+      "title": {
+        "en": "Homemade Infusions",
+        "ua": "Домашні настоянки"
+      },
+      "items": [
+        {
+          "id": "khrenovukha",
+          "name": { "en": "Horseradish Vodka (Khrenovukha)", "ua": "Хріновуха" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "medovukha",
+          "name": { "en": "Honey Mead (Medovukha)", "ua": "Медовуха" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "pertzovka",
+          "name": { "en": "Pepper Vodka (Pertzovka)", "ua": "Перцівка" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "cranberry-infusion",
+          "name": { "en": "Cranberry Vodka Infusion", "ua": "Журавлинна настоянка" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "title": {
+        "en": "Cocktails",
+        "ua": "Коктейлі"
+      },
+      "items": [
+        {
+          "id": "caesar",
+          "name": { "en": "Caesar", "ua": "Цезар" },
+          "description": {
+            "en": "Vodka (1 oz), Worcestershire sauce, hot sauce, tomato juice, lemon juice, celery stalk",
+            "ua": "Горілка (30 мл), вустерський соус, гострий соус, томатний сік, лимонний сік, селера"
+          },
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "mojito",
+          "name": { "en": "Mojito", "ua": "Мохіто" },
+          "description": {
+            "en": "White rum (1 oz), fresh mint, lime, brown sugar, soda water",
+            "ua": "Білий ром (30 мл), свіжа м'ята, лайм, коричневий цукор, содова"
+          },
+          "price": 12,
+          "dietary": []
+        },
+        {
+          "id": "long-island",
+          "name": { "en": "Long Island Iced Tea", "ua": "Лонг Айленд" },
+          "description": {
+            "en": "Vodka, white rum, gin, tequila, triple sec (2.5 oz total), lemon juice, cola",
+            "ua": "Горілка, білий ром, джин, текіла, тріпл сек (75 мл загалом), лимонний сік, кола"
+          },
+          "price": 15,
+          "dietary": []
+        },
+        {
+          "id": "negroni",
+          "name": { "en": "Negroni", "ua": "Негроні" },
+          "description": {
+            "en": "Gin, Campari, sweet vermouth (3 oz total), orange peel",
+            "ua": "Джин, Кампарі, солодкий вермут (90 мл загалом), апельсинова цедра"
+          },
+          "price": 15,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "coffee-cocktails",
+      "title": {
+        "en": "Coffee Cocktails",
+        "ua": "Кавові коктейлі"
+      },
+      "items": [
+        {
+          "id": "irish-coffee",
+          "name": { "en": "Irish Coffee", "ua": "Айріш Кава" },
+          "description": { "en": "1 oz whisky", "ua": "30 мл віскі" },
+          "price": 10,
+          "dietary": []
+        },
+        {
+          "id": "baileys-espresso",
+          "name": { "en": "Baileys Espresso", "ua": "Бейліз Еспресо" },
+          "description": { "en": "0.5 oz Baileys", "ua": "15 мл Бейліз" },
+          "price": 8,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "title": {
+        "en": "Coffee",
+        "ua": "Кава"
       },
       "items": [
         {
           "id": "espresso",
           "name": { "en": "Espresso", "ua": "Еспресо" },
           "description": { "en": "", "ua": "" },
-          "price": 4.00,
+          "price": 4,
           "dietary": []
         },
         {
           "id": "double-espresso",
           "name": { "en": "Double Espresso", "ua": "Подвійне еспресо" },
           "description": { "en": "", "ua": "" },
-          "price": 5.00,
+          "price": 5,
           "dietary": []
         },
         {
           "id": "americano",
           "name": { "en": "Americano", "ua": "Американо" },
           "description": { "en": "", "ua": "" },
-          "price": 4.00,
+          "price": 5,
           "dietary": []
         },
         {
           "id": "cappuccino",
           "name": { "en": "Cappuccino", "ua": "Капучіно" },
           "description": { "en": "", "ua": "" },
-          "price": 6.00,
+          "price": 6,
           "dietary": []
         },
         {
-          "id": "tea",
-          "name": { "en": "Tea", "ua": "Чай" },
+          "id": "latte",
+          "name": { "en": "Latte", "ua": "Латте" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        },
+        {
+          "id": "flat-white",
+          "name": { "en": "Flat White", "ua": "Флет Вайт" },
+          "description": { "en": "", "ua": "" },
+          "price": 6,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "tea",
+      "title": {
+        "en": "Tea",
+        "ua": "Чай"
+      },
+      "items": [
+        {
+          "id": "pot-of-tea",
+          "name": { "en": "Pot of Tea", "ua": "Чайник чаю" },
           "description": {
-            "en": "Black tea, green tea, herbal tea",
-            "ua": "Чорний чай, зелений чай, трав'яний чай"
+            "en": "Black, green, herbal, flavoured selection",
+            "ua": "Чорний, зелений, трав'яний, ароматизований на вибір"
           },
-          "price": 5.00,
+          "price": 7,
           "dietary": []
         }
       ]
@@ -60,91 +509,65 @@
       },
       "items": [
         {
-          "id": "orange-juice",
-          "name": { "en": "Freshly Squeezed Orange Juice", "ua": "Свіжовичавлений апельсиновий сік" },
-          "description": { "en": "", "ua": "" },
-          "price": 9.00,
-          "dietary": []
-        },
-        {
-          "id": "grapefruit-juice",
-          "name": { "en": "Freshly Squeezed Grapefruit Juice", "ua": "Свіжовичавлений грейпфрутовий сік" },
-          "description": { "en": "", "ua": "" },
-          "price": 12.00,
+          "id": "kompot",
+          "name": { "en": "Kompot", "ua": "Компот" },
+          "description": {
+            "en": "Traditional berry drink",
+            "ua": "Традиційний ягідний напій"
+          },
+          "variants": [
+            { "label": { "en": "Glass", "ua": "Склянка" }, "price": 4 },
+            { "label": { "en": "Pitcher (1.5 L)", "ua": "Глечик (1,5 л)" }, "price": 20 }
+          ],
           "dietary": []
         },
         {
           "id": "soft-drinks",
           "name": { "en": "Soft Drinks", "ua": "Безалкогольні напої" },
           "description": {
-            "en": "Coca-Cola, Coca-Cola Zero, Fanta, Ginger Ale, Club Soda",
-            "ua": "Coca-Cola, Coca-Cola Zero, Fanta, Ginger Ale, Club Soda"
+            "en": "Coca-Cola, Coke Zero, Diet Coke, Fanta, Ginger Ale, Club Soda, Tonic Water",
+            "ua": "Coca-Cola, Coca-Cola Zero, Diet Coke, Fanta, Ginger Ale, Club Soda, Тонік"
           },
-          "price": 3.00,
+          "price": 3,
+          "dietary": []
+        },
+        {
+          "id": "perrier",
+          "name": { "en": "Perrier", "ua": "Perrier" },
+          "description": { "en": "330 ml", "ua": "330 мл" },
+          "price": 5,
+          "dietary": []
+        },
+        {
+          "id": "borjomi",
+          "name": { "en": "Borjomi", "ua": "Боржомі" },
+          "description": {
+            "en": "Georgian carbonated mineral water, 750 ml",
+            "ua": "Грузинська газована мінеральна вода, 750 мл"
+          },
+          "price": 7,
+          "dietary": []
+        },
+        {
+          "id": "san-pellegrino",
+          "name": { "en": "San Pellegrino", "ua": "San Pellegrino" },
+          "description": { "en": "750 ml", "ua": "750 мл" },
+          "price": 7,
+          "dietary": []
+        },
+        {
+          "id": "evian",
+          "name": { "en": "Evian", "ua": "Evian" },
+          "description": { "en": "750 ml", "ua": "750 мл" },
+          "price": 9,
           "dietary": []
         },
         {
           "id": "bottled-water",
           "name": { "en": "Bottled Water", "ua": "Вода в пляшці" },
-          "description": { "en": "", "ua": "" },
-          "price": 2.00,
+          "description": { "en": "500 ml", "ua": "500 мл" },
+          "price": 2,
           "dietary": []
-        },
-        {
-          "id": "perrier",
-          "name": { "en": "Perrier Sparkling Water", "ua": "Perrier газована вода" },
-          "description": { "en": "", "ua": "" },
-          "price": 5.00,
-          "dietary": []
-        },
-        {
-          "id": "compote",
-          "name": { "en": "Compote", "ua": "Компот" },
-          "description": {
-            "en": "Traditional fruit drink",
-            "ua": "Традиційний фруктовий напій"
-          },
-          "price": 4.00,
-          "dietary": []
-        }
-      ]
-    },
-    {
-      "id": "desserts",
-      "title": {
-        "en": "Desserts",
-        "ua": "Десерти"
-      },
-      "items": [
-        {
-          "id": "fruit-platter",
-          "name": { "en": "Fruit Platter", "ua": "Фруктова тарілка" },
-          "description": {
-            "en": "An assortment of grapes, apples, blueberries, and bananas (fruits may vary based on seasonal availability)",
-            "ua": "Асорті з винограду, яблук, чорниць та бананів (фрукти можуть змінюватись залежно від сезону)"
-          },
-          "price": 15.00,
-          "dietary": ["vegetarian", "gluten-free", "dairy-free"]
-        },
-        {
-          "id": "lviv-cheesecake",
-          "name": { "en": "Lviv Style Cheesecake", "ua": "Львівський сирник" },
-          "description": {
-            "en": "A traditional cheesecake made from our homemade cottage cheese, served with sour cream, drizzled with rich chocolate, and topped with fresh berries",
-            "ua": "Традиційний сирник з домашнього сиру, подається зі сметаною, политий шоколадом та прикрашений свіжими ягодами"
-          },
-          "price": 14.00,
-          "dietary": ["vegetarian"]
-        },
-        {
-          "id": "ice-cream",
-          "name": { "en": "Ice Cream", "ua": "Морозиво" },
-          "description": {
-            "en": "Choice of plain vanilla or vanilla ice cream with peanut butter cups and fudge swirl",
-            "ua": "Ванільне морозиво або ванільне морозиво з арахісовим маслом та шоколадом"
-          },
-          "price": 6.00,
-          "dietary": ["vegetarian", "gluten-free"]
         }
       ]
     }

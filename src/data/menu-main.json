@@ -4,32 +4,42 @@
     "en": "Main Menu",
     "ua": "Основне меню"
   },
+  "featured": {
+    "id": "tasting-set",
+    "name": { "en": "Discover Ukrainian Flavours", "ua": "Відкрийте українські смаки" },
+    "subtitle": { "en": "Tasting set for two", "ua": "Дегустаційний сет на двох" },
+    "description": {
+      "en": "Not sure what to try first? Enjoy a sharing set of our signature Ukrainian dishes — a perfect way to explore the classics together.",
+      "ua": "Не знаєте, з чого почати? Спробуйте сет із наших фірмових українських страв — ідеальний спосіб відкрити класику разом."
+    },
+    "price": 79.00
+  },
   "categories": [
     {
-      "id": "cold-appetizers",
+      "id": "appetizers",
       "title": {
-        "en": "Cold Appetizers",
-        "ua": "Холодні закуски"
+        "en": "Appetizers & Salads",
+        "ua": "Закуски та салати"
       },
       "items": [
         {
-          "id": "ukrainian-platter",
-          "name": { "en": "Ukrainian Platter", "ua": "Українська тарілка" },
+          "id": "potato-pancakes-mushrooms",
+          "name": { "en": "Potato Pancakes with Mushrooms in Creamy Sauce", "ua": "Деруни з грибами у вершковому соусі" },
           "description": {
-            "en": "Three types of traditional Ukrainian salo (pork belly): Generalske (with a layer of meat), smoked, and with garlic and pepper. Served with fresh garlic, onions, and slices of hearty black bread",
-            "ua": "Три види традиційного українського сала: генеральське (з прошарком м'яса), копчене та з часником і перцем. Подається з часником, цибулею та чорним хлібом"
+            "en": "Traditional Ukrainian-style potato pancakes, soft and tender, served with a rich mushroom cream sauce",
+            "ua": "Традиційні українські деруни, м'які та ніжні, подаються з насиченим грибним вершковим соусом"
           },
           "price": 19.00,
           "dietary": []
         },
         {
-          "id": "meat-platter",
-          "name": { "en": "Meat Platter", "ua": "М'ясна тарілка" },
+          "id": "potato-pancakes-salmon",
+          "name": { "en": "Potato Pancakes with Marinated Salmon & Cream Cheese", "ua": "Деруни з маринованим лососем та крем-сиром" },
           "description": {
-            "en": "Three types of Ukrainian salo (pork belly), ham and salami",
-            "ua": "Три види українського сала, шинка та салямі"
+            "en": "Traditional Ukrainian-style potato pancakes, soft and tender, served with marinated salmon and our house-made cream cheese",
+            "ua": "Традиційні українські деруни, м'які та ніжні, подаються з маринованим лососем та домашнім крем-сиром"
           },
-          "price": 24.00,
+          "price": 25.00,
           "dietary": []
         },
         {
@@ -43,14 +53,14 @@
           "dietary": ["vegetarian", "gluten-free", "dairy-free"]
         },
         {
-          "id": "pickled-mushrooms",
-          "name": { "en": "Pickled Mushrooms", "ua": "Мариновані гриби" },
+          "id": "ukrainian-platter",
+          "name": { "en": "Ukrainian Platter", "ua": "Українська тарілка" },
           "description": {
-            "en": "Wild mushroom mix in a homemade marinade",
-            "ua": "Суміш лісових грибів у домашньому маринаді"
+            "en": "Two types of traditional Ukrainian salo (pork belly): smoked, and with garlic and pepper. Served with fresh, aromatic garlic, onions, and slices of hearty rye bread",
+            "ua": "Два види традиційного українського сала: копчене та з часником і перцем. Подається з часником, цибулею та житнім хлібом"
           },
-          "price": 10.00,
-          "dietary": ["vegetarian", "gluten-free", "dairy-free"]
+          "price": 21.00,
+          "dietary": []
         },
         {
           "id": "beetroot-carpaccio",
@@ -59,28 +69,19 @@
             "en": "Beetroot slices with blueberry sauce, arugula, creamy cheese, and crunchy cashews",
             "ua": "Скибочки буряка з чорничним соусом, руколою, ніжним сиром та горіхами кеш'ю"
           },
-          "price": 15.00,
+          "price": 16.00,
           "dietary": ["vegetarian", "gluten-free"]
         },
         {
-          "id": "salmon-tataki",
-          "name": { "en": "Salmon Tataki", "ua": "Татакі з лосося" },
+          "id": "potato-pierogies",
+          "name": { "en": "Potato Pierogies", "ua": "Вареники з картоплею" },
           "description": {
-            "en": "Fresh salmon slices in orange sauce, drizzled with truffle oil, finished with cucumber",
-            "ua": "Свіжі скибочки лосося в апельсиновому соусі з трюфельною олією та огірком"
+            "en": "Traditional dumplings filled with creamy potato and cheddar cheese",
+            "ua": "Традиційні вареники з ніжною картоплею та сиром чедер"
           },
-          "price": 18.00,
-          "dietary": ["gluten-free", "dairy-free"]
-        }
-      ]
-    },
-    {
-      "id": "hot-appetizers",
-      "title": {
-        "en": "Hot Appetizers",
-        "ua": "Гарячі закуски"
-      },
-      "items": [
+          "price": 13.00,
+          "dietary": ["vegetarian"]
+        },
         {
           "id": "khachapuri",
           "name": { "en": "Khachapuri", "ua": "Хачапурі" },
@@ -88,67 +89,18 @@
             "en": "Soft, homemade flatbread generously filled with rich, melted cheese",
             "ua": "М'який домашній хліб, щедро наповнений розтопленим сиром"
           },
-          "price": 18.00,
+          "price": 19.00,
           "dietary": ["vegetarian"]
         },
         {
-          "id": "potato-pancakes",
-          "name": { "en": "Potato Pancakes", "ua": "Деруни" },
+          "id": "shrimp-salad",
+          "name": { "en": "Shrimp Salad", "ua": "Салат з креветками" },
           "description": {
-            "en": "Served with your choice of toppings: sautéed mushrooms with onions or smoked salmon",
-            "ua": "Подаються з начинкою на вибір: смажені гриби з цибулею або копчений лосось"
+            "en": "Grilled shrimp, avocado, tomatoes, onions, and a homemade sweet chili dressing",
+            "ua": "Смажені креветки, авокадо, помідори, цибуля та домашній солодкий чілі дресінг"
           },
-          "price": 19.00,
-          "dietary": []
-        },
-        {
-          "id": "savory-shrimps",
-          "name": { "en": "Savory Shrimps", "ua": "Креветки" },
-          "description": {
-            "en": "Choose your style: shrimps in a rich creamy sauce or with tomatoes and garlic",
-            "ua": "Оберіть стиль: креветки у вершковому соусі або з помідорами та часником"
-          },
-          "price": 21.00,
-          "dietary": ["gluten-free"]
-        }
-      ]
-    },
-    {
-      "id": "salads",
-      "title": {
-        "en": "Salads",
-        "ua": "Салати"
-      },
-      "items": [
-        {
-          "id": "coloreat-caesar",
-          "name": { "en": "ColorEat Caesar", "ua": "Цезар ColorEat" },
-          "description": {
-            "en": "Crisp lettuce, roasted chicken, tomatoes, quail egg, crunchy croutons, parmesan, and homemade Caesar dressing",
-            "ua": "Хрусткий салат, смажена курка, помідори, перепелине яйце, крутони, пармезан та домашній соус Цезар"
-          },
-          "price": 17.00,
-          "dietary": []
-        },
-        {
-          "id": "salmon-salad",
-          "name": { "en": "Salmon Salad", "ua": "Салат з лососем" },
-          "description": {
-            "en": "A mix of fresh greens, juicy tomatoes, cucumbers, smoky salmon, avocado, and crunchy pine nuts",
-            "ua": "Мікс свіжої зелені, соковиті помідори, огірки, копчений лосось, авокадо та кедрові горішки"
-          },
-          "price": 21.00,
-          "dietary": ["gluten-free"]
-        },
-        {
-          "id": "pear-blue-cheese",
-          "name": { "en": "Pear & Blue Cheese Salad", "ua": "Салат з грушею та блакитним сиром" },
-          "description": {
-            "en": "A mix of fresh greens, tomatoes, ripe pear, creamy blue cheese, and a honey dressing",
-            "ua": "Мікс свіжої зелені, помідори, стигла груша, ніжний блакитний сир та медовий дресінг"
-          },
-          "price": 17.00,
-          "dietary": ["vegetarian", "gluten-free"]
+          "price": 20.00,
+          "dietary": ["gluten-free", "dairy-free"]
         },
         {
           "id": "ukrainian-vegetable-salad",
@@ -169,16 +121,6 @@
           },
           "price": 17.00,
           "dietary": ["vegetarian", "gluten-free", "dairy-free"]
-        },
-        {
-          "id": "shrimp-salad",
-          "name": { "en": "Shrimp Salad", "ua": "Салат з креветками" },
-          "description": {
-            "en": "Grilled shrimp, avocado, tomatoes, onions, and a homemade sweet chili dressing",
-            "ua": "Смажені креветки, авокадо, помідори, цибуля та домашній солодкий чілі дресінг"
-          },
-          "price": 20.00,
-          "dietary": ["gluten-free", "dairy-free"]
         }
       ]
     },
@@ -203,21 +145,11 @@
           "id": "fish-soup",
           "name": { "en": "Fish Soup", "ua": "Рибний суп" },
           "description": {
-            "en": "A flavorful fish broth with salmon, shrimps, tender potatoes, and tomatoes",
+            "en": "A flavourful fish broth with salmon, shrimps, tender potatoes, and tomatoes",
             "ua": "Наваристий рибний бульйон з лососем, креветками, ніжною картоплею та помідорами"
           },
-          "price": 14.00,
+          "price": 15.00,
           "dietary": ["gluten-free", "dairy-free"]
-        },
-        {
-          "id": "chicken-noodle-soup",
-          "name": { "en": "Chicken Noodle Soup", "ua": "Курячий суп з локшиною" },
-          "description": {
-            "en": "A light chicken broth with tender chicken, noodles, and a quail egg",
-            "ua": "Легкий курячий бульйон з ніжною куркою, локшиною та перепелиним яйцем"
-          },
-          "price": 9.00,
-          "dietary": ["dairy-free"]
         },
         {
           "id": "ukrainian-borscht",
@@ -226,7 +158,7 @@
             "en": "A hearty Ukrainian soup made with beef broth, beets, cabbage, and potatoes. Served with sour cream, a slice of black bread, and small Ukrainian platter",
             "ua": "Наваристий український суп на яловичому бульйоні з буряком, капустою та картоплею. Подається зі сметаною, чорним хлібом та невеликою українською тарілкою"
           },
-          "price": 16.00,
+          "price": 19.00,
           "note": {
             "en": "Option without additions available for $12",
             "ua": "Без додатків — $12"
@@ -243,6 +175,30 @@
       },
       "items": [
         {
+          "id": "grilled-salmon",
+          "name": { "en": "Grilled Salmon", "ua": "Лосось на грилі" },
+          "description": {
+            "en": "Succulent grilled salmon, served with sweet chili sauce and creamy mashed potatoes infused with truffle oil",
+            "ua": "Соковитий лосось на грилі з соусом солодкий чілі та трюфельним пюре"
+          },
+          "price": 25.00,
+          "note": {
+            "en": "Substitute for asparagus for +$3",
+            "ua": "Заміна на спаржу +$3"
+          },
+          "dietary": ["gluten-free"]
+        },
+        {
+          "id": "seared-scallops",
+          "name": { "en": "Seared Scallops with Truffle Mash", "ua": "Гребінці з трюфельним пюре" },
+          "description": {
+            "en": "Delicate seared scallops atop truffle-infused mashed potatoes. Mashed potatoes may be substituted with asparagus (+$3)",
+            "ua": "Ніжні обсмажені гребінці на трюфельному пюре. Пюре можна замінити на спаржу (+$3)"
+          },
+          "price": 36.00,
+          "dietary": ["gluten-free"]
+        },
+        {
           "id": "beef-stroganoff",
           "name": { "en": "Beef Stroganoff", "ua": "Бефстроганов" },
           "description": {
@@ -253,28 +209,24 @@
           "dietary": []
         },
         {
-          "id": "stew",
-          "name": { "en": "Stew", "ua": "Рагу" },
+          "id": "chicken-schnitzel",
+          "name": { "en": "Chicken Schnitzel", "ua": "Шніцель з курки" },
           "description": {
-            "en": "Hearty beef stew with potatoes, sweet potatoes, carrots, celery, and onions",
-            "ua": "Наваристе яловиче рагу з картоплею, бататом, морквою, селерою та цибулею"
+            "en": "Tender chicken fillet in a golden breadcrumb crust, pan-fried in ghee, served with truffle-infused mashed potatoes. Mashed potatoes may be substituted with asparagus (+$3)",
+            "ua": "Ніжне куряче філе у золотистій паніровці, смажене на гхі, подається з трюфельним пюре. Пюре можна замінити на спаржу (+$3)"
           },
-          "price": 23.00,
-          "dietary": ["gluten-free", "dairy-free"]
+          "price": 22.00,
+          "dietary": []
         },
         {
-          "id": "grilled-salmon",
-          "name": { "en": "Grilled Salmon", "ua": "Лосось на грилі" },
+          "id": "chicken-chopped-patties",
+          "name": { "en": "Chicken Chopped Patties", "ua": "Курячі посічені котлети" },
           "description": {
-            "en": "Succulent grilled salmon topped with a delicate sauce, served with creamy mashed potatoes infused with truffle oil",
-            "ua": "Соковитий лосось на грилі з делікатним соусом, подається з трюфельним пюре"
+            "en": "Traditional Ukrainian-style patties made from cubed chicken breast (not ground), mixed with onions, then pan-seared until juicy and tender. Served with truffle-infused mashed potatoes. Mashed potatoes may be substituted with asparagus (+$3)",
+            "ua": "Традиційні українські котлети з рубленого курячого філе (не фаршу), з цибулею, обсмажені до золотистої скоринки. Подаються з трюфельним пюре. Пюре можна замінити на спаржу (+$3)"
           },
-          "price": 24.00,
-          "note": {
-            "en": "Substitute for asparagus for +$3",
-            "ua": "Заміна на спаржу +$3"
-          },
-          "dietary": ["gluten-free"]
+          "price": 15.00,
+          "dietary": []
         },
         {
           "id": "buckwheat-mushrooms",
@@ -283,31 +235,17 @@
             "en": "Buckwheat cooked with onions and mushrooms for a simple and hearty dish",
             "ua": "Гречка, приготована з цибулею та грибами — проста та ситна страва"
           },
-          "price": 14.00,
+          "price": 17.00,
           "dietary": ["vegetarian", "dairy-free"]
         },
         {
           "id": "stuffed-pepper",
           "name": { "en": "Stuffed Pepper", "ua": "Фарширований перець" },
           "description": {
-            "en": "A tender pepper filled with ground beef and rice, simmered in a rich vegetable sauce and served with sour cream",
+            "en": "A tender pepper stuffed with ground beef and rice, simmered in a rich vegetable sauce and served with sour cream",
             "ua": "Ніжний перець, фарширований яловичим фаршем та рисом, тушкований в овочевому соусі, подається зі сметаною"
           },
           "price": 22.00,
-          "dietary": ["gluten-free"]
-        },
-        {
-          "id": "juicy-chicken",
-          "name": { "en": "Juicy Chicken", "ua": "Соковита курка" },
-          "description": {
-            "en": "Tender chicken thighs with fried onions, served with truffle mashed potatoes",
-            "ua": "Ніжні курячі стегенця зі смаженою цибулею, подаються з трюфельним пюре"
-          },
-          "price": 22.00,
-          "note": {
-            "en": "Substitute with buckwheat or asparagus (+$3)",
-            "ua": "Заміна на гречку або спаржу (+$3)"
-          },
           "dietary": ["gluten-free"]
         },
         {
@@ -317,18 +255,8 @@
             "en": "Savory beef and rice filling wrapped in tender cabbage, slow-cooked in a rich vegetable sauce and served with sour cream",
             "ua": "Яловичий фарш з рисом, загорнутий у ніжну капусту, тушкований в овочевому соусі, подається зі сметаною"
           },
-          "price": 20.00,
+          "price": 22.00,
           "dietary": ["gluten-free"]
-        },
-        {
-          "id": "potato-pierogies",
-          "name": { "en": "Potato Pierogies", "ua": "Вареники з картоплею" },
-          "description": {
-            "en": "Traditional dumplings filled with creamy potato and cheddar cheese",
-            "ua": "Традиційні вареники з ніжною картоплею та сиром чедер"
-          },
-          "price": 13.00,
-          "dietary": ["vegetarian"]
         }
       ]
     },
@@ -354,8 +282,8 @@
           "dietary": ["vegetarian", "gluten-free"]
         },
         {
-          "id": "roasted-potatoes",
-          "name": { "en": "Roasted Potatoes", "ua": "Смажена картопля" },
+          "id": "home-style-potatoes",
+          "name": { "en": "Home-style Potatoes", "ua": "Домашня картопля" },
           "description": { "en": "", "ua": "" },
           "price": 6.00,
           "dietary": ["vegetarian", "gluten-free", "dairy-free"]
@@ -366,6 +294,45 @@
           "description": { "en": "", "ua": "" },
           "price": 6.00,
           "dietary": ["vegetarian", "gluten-free", "dairy-free"]
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "title": {
+        "en": "Desserts",
+        "ua": "Десерти"
+      },
+      "items": [
+        {
+          "id": "honey-cake",
+          "name": { "en": "Honey Cake", "ua": "Медовик" },
+          "description": {
+            "en": "Delicate thin honey layers with a smooth Philadelphia-sour cream frosting for a perfectly balanced sweetness",
+            "ua": "Ніжні тонкі медові коржі з кремом із Філадельфії та сметани для ідеально збалансованої солодкості"
+          },
+          "price": 14.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "lviv-cheesecake",
+          "name": { "en": "Lviv Style Cheesecake", "ua": "Львівський сирник" },
+          "description": {
+            "en": "A traditional cheesecake made from our homemade cottage cheese, served with sour cream, drizzled with rich chocolate, and topped with fresh berries",
+            "ua": "Традиційний сирник з домашнього сиру, подається зі сметаною, политий шоколадом та прикрашений свіжими ягодами"
+          },
+          "price": 15.00,
+          "dietary": ["vegetarian"]
+        },
+        {
+          "id": "ice-cream",
+          "name": { "en": "Ice Cream", "ua": "Морозиво" },
+          "description": {
+            "en": "Ask your server for available flavours",
+            "ua": "Запитайте у офіціанта про доступні смаки"
+          },
+          "price": 6.00,
+          "dietary": ["vegetarian", "gluten-free"]
         }
       ]
     }

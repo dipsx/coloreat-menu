@@ -6,25 +6,25 @@ import PdfDownload from '../../../components/PdfDownload.astro';
 import SchemaMenu from '../../../components/SchemaMenu.astro';
 import { t } from '../../../i18n/utils';
 import menuMain from '../../../data/menu-main.json';
-import menuBreakfast from '../../../data/menu-breakfast.json';
 import menuCrepes from '../../../data/menu-crepes.json';
 import menuDrinks from '../../../data/menu-drinks.json';
+import menuCatering from '../../../data/menu-catering.json';
 import restaurant from '../../../data/restaurant.json';
 
 const locale = 'en';
 const ui = t(locale);
 
 const navItems = [
-  { id: menuBreakfast.id, label: menuBreakfast.title },
-  { id: menuCrepes.id, label: menuCrepes.title },
   { id: menuMain.id, label: menuMain.title },
+  { id: menuCrepes.id, label: menuCrepes.title },
   { id: menuDrinks.id, label: menuDrinks.title },
+  { id: menuCatering.id, label: menuCatering.title },
 ];
 
-const allMenus = [menuBreakfast, menuCrepes, menuMain, menuDrinks];
+const allMenus = [menuMain, menuCrepes, menuDrinks, menuCatering];
 ---
 
-<Layout title={ui.menu.title} locale={locale} description="Full menu of ColorEat Cafe — Ukrainian cuisine in Oakville. Breakfast, crepes, soups, main courses, drinks and desserts.">
+<Layout title={ui.menu.title} locale={locale} description="Full menu of ColorEat Cafe — Ukrainian cuisine in Oakville. Appetizers, soups, main courses, crêpes, drinks, and catering.">
   <SchemaMenu menus={allMenus} locale={locale} slot="head" />
 
   <div class="max-w-3xl mx-auto px-4 py-8 sm:py-12">
@@ -42,10 +42,11 @@ const allMenus = [menuBreakfast, menuCrepes, menuMain, menuDrinks];
     <!-- Menu sections -->
     <div class="mt-8 space-y-12">
       <MenuSection
-        menuTitle={menuBreakfast.title}
-        categories={menuBreakfast.categories}
+        menuTitle={menuMain.title}
+        categories={menuMain.categories}
         locale={locale}
-        menuId={menuBreakfast.id}
+        menuId={menuMain.id}
+        featured={menuMain.featured}
       />
 
       <MenuSection
@@ -56,17 +57,17 @@ const allMenus = [menuBreakfast, menuCrepes, menuMain, menuDrinks];
       />
 
       <MenuSection
-        menuTitle={menuMain.title}
-        categories={menuMain.categories}
-        locale={locale}
-        menuId={menuMain.id}
-      />
-
-      <MenuSection
         menuTitle={menuDrinks.title}
         categories={menuDrinks.categories}
         locale={locale}
         menuId={menuDrinks.id}
+      />
+
+      <MenuSection
+        menuTitle={menuCatering.title}
+        categories={menuCatering.categories}
+        locale={locale}
+        menuId={menuCatering.id}
       />
     </div>
 

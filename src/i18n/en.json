@@ -5,6 +5,7 @@
     "downloadPdf": "Download PDF"
   },
   "home": {
+    "description": "Authentic Ukrainian cuisine in Oakville. Fresh ingredients, homemade flavours.",
     "heroTitle": "Welcome to ColorEat",
     "heroSubtitle": "A piece of Ukraine in Oakville",
     "viewMenu": "View Menu",
@@ -18,6 +19,7 @@
     "orderOn": "Order on"
   },
   "menu": {
+    "description": "Full menu of ColorEat Cafe — Ukrainian cuisine in Oakville. Appetizers, soups, main courses, crêpes, drinks, and catering.",
     "title": "Our Menu",
     "allCategories": "All",
     "allergyNotice": "Please inform your server about any allergies or dietary restrictions",

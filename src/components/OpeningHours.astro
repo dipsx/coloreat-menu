@@ -46,12 +46,12 @@ function formatTime(time24: string): string {
         <span class="status-text text-sm font-medium text-warm-500">{ui.hours.closedNow}</span>
       </div>
     </div>
-    <ul class="space-y-1.5">
+    <ul class="space-y-0.5 sm:space-y-1.5">
       {dayOrder.map((day, i) => {
         const dayHours = hours[day];
         return (
           <li
-            class="flex justify-between items-center px-3 py-2 rounded-lg text-sm transition-colors"
+            class="flex justify-between items-center px-2 sm:px-3 py-2 sm:py-2 rounded-lg text-[13px] sm:text-sm transition-colors"
             data-day-index={i}
           >
             <span class="font-medium text-warm-700">

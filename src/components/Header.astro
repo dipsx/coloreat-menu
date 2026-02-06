@@ -16,33 +16,35 @@ const altPath = getLocalizedPath(currentPath, altLocale);
 ---
 
 <header class="sticky top-0 z-50 bg-warm-50/95 backdrop-blur-sm border-b border-warm-200">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-    <!-- Logo / Name -->
-    <a href={getLocalizedPath('/', locale)} class="flex items-center gap-2 group">
-      <span class="text-2xl font-bold tracking-tight font-[Playfair_Display] text-brand-800 group-hover:text-brand-600 transition-colors">
-        ColorEat
-      </span>
+  <div class="max-w-5xl mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={getLocalizedPath('/', locale)} class="shrink-0 group">
+      <img
+        src={`${base}/logo/logo-256.png`}
+        alt="ColorEat Cafe"
+        class="h-9 sm:h-10 w-auto group-hover:opacity-90 transition-opacity"
+        width="256"
+        height="256"
+      />
     </a>
 
     <!-- Navigation -->
-    <nav class="flex items-center gap-1 sm:gap-3">
+    <nav class="flex items-center gap-1 sm:gap-2">
       <a
         href={getLocalizedPath('/', locale)}
-        class="px-3 py-2 text-sm font-medium text-warm-700 hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors"
+        class="hidden sm:inline-flex px-3 py-2 text-sm font-medium text-warm-800 hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors"
       >
         {ui.nav.home}
       </a>
       <a
         href={getLocalizedPath('/menu/', locale)}
-        class="px-3 py-2 text-sm font-medium text-warm-700 hover:text-brand-700 hover:bg-brand-50 rounded-lg transition-colors"
+        class="px-3 py-2 text-sm font-medium text-warm-800 hover:text-brand-700 active:bg-brand-50 rounded-lg transition-colors"
       >
         {ui.nav.menu}
       </a>
-
-      <!-- Language Switcher -->
       <a
         href={altPath}
-        class="ml-1 sm:ml-2 px-3 py-1.5 text-xs font-semibold border border-warm-300 rounded-full hover:bg-brand-50 hover:border-brand-400 transition-colors"
+        class="px-2.5 sm:px-3 py-1.5 text-xs font-semibold text-warm-800 border border-warm-300 rounded-full hover:bg-brand-50 hover:border-brand-400 active:bg-brand-100 transition-colors"
         aria-label={`Switch to ${ui.language[altLocale]}`}
       >
         {altLocale === 'ua' ? 'UA' : 'EN'}

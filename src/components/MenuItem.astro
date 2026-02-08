@@ -2,12 +2,18 @@
 import DietaryBadge from './DietaryBadge.astro';
 import { l, type Locale } from '../i18n/utils';
 
+interface Variant {
+  label: { en: string; ua: string };
+  price: number;
+}
+
 interface Props {
   item: {
     id: string;
     name: { en: string; ua: string };
     description: { en: string; ua: string };
-    price: number;
+    price?: number;
+    variants?: Variant[];
     note?: { en: string; ua: string };
     dietary: string[];
   };
@@ -18,7 +24,7 @@ const { item, locale } = Astro.props;
 const name = l(item.name, locale);
 const description = l(item.description, locale);
 const note = item.note ? l(item.note, locale) : null;
-const price = item.price.toFixed(2);
+const hasVariants = item.variants && item.variants.length > 0;
 ---
 
 <div class="group py-4 first:pt-0 last:pb-0 pl-3 border-l-2 border-transparent hover:border-brand-400 transition-all duration-200">
@@ -41,8 +47,21 @@ const price = item.price.toFixed(2);
         <p class="mt-1 text-xs text-warm-500 italic">{note}</p>
       )}
     </div>
-    <span class="text-lg font-bold text-brand-700 whitespace-nowrap shrink-0 tabular-nums">
-      ${price}
-    </span>
+    {hasVariants ? (
+      <div class="flex flex-col items-end gap-0.5 shrink-0">
+        {item.variants!.map((v) => (
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-warm-500">{l(v.label, locale)}</span>
+            <span class="text-sm font-bold text-brand-700 tabular-nums whitespace-nowrap">
+              ${v.price.toFixed(0)}
+            </span>
+          </div>
+        ))}
+      </div>
+    ) : item.price !== undefined ? (
+      <span class="text-lg font-bold text-brand-700 whitespace-nowrap shrink-0 tabular-nums">
+        ${item.price.toFixed(2)}
+      </span>
+    ) : null}
   </div>
 </div>

@@ -1,0 +1,275 @@
+{
+  "id": "catering",
+  "title": {
+    "en": "Catering",
+    "ua": "Кейтеринг"
+  },
+  "categories": [
+    {
+      "id": "catering-soups",
+      "title": {
+        "en": "Soups (32 oz)",
+        "ua": "Супи (950 мл)"
+      },
+      "items": [
+        {
+          "id": "cat-vegetable-soup",
+          "name": { "en": "Vegetable Soup", "ua": "Овочевий суп" },
+          "description": { "en": "", "ua": "" },
+          "price": 17,
+          "dietary": []
+        },
+        {
+          "id": "cat-borscht",
+          "name": { "en": "Borscht", "ua": "Борщ" },
+          "description": { "en": "", "ua": "" },
+          "price": 22,
+          "dietary": []
+        },
+        {
+          "id": "cat-fish-soup",
+          "name": { "en": "Fish Soup", "ua": "Рибний суп" },
+          "description": { "en": "", "ua": "" },
+          "price": 27,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "catering-appetizers",
+      "title": {
+        "en": "Appetizers & Canapés",
+        "ua": "Закуски та канапе"
+      },
+      "note": { "en": "Per tray or per quantity", "ua": "За піднос або за кількість" },
+      "items": [
+        {
+          "id": "cat-pierogies",
+          "name": { "en": "Potato Pierogies", "ua": "Вареники з картоплею" },
+          "description": { "en": "", "ua": "" },
+          "variants": [
+            { "label": { "en": "24 pcs", "ua": "24 шт" }, "price": 39 },
+            { "label": { "en": "48 pcs", "ua": "48 шт" }, "price": 72 }
+          ],
+          "dietary": []
+        },
+        {
+          "id": "cat-khachapuri",
+          "name": { "en": "Khachapuri", "ua": "Хачапурі" },
+          "description": { "en": "8 pcs", "ua": "8 шт" },
+          "price": 20,
+          "dietary": []
+        },
+        {
+          "id": "cat-beet-carpaccio",
+          "name": { "en": "Beet Carpaccio", "ua": "Карпачо з буряка" },
+          "description": { "en": "Serves 6–10", "ua": "На 6–10 осіб" },
+          "price": 44,
+          "dietary": []
+        },
+        {
+          "id": "cat-ukrainian-platter",
+          "name": { "en": "Ukrainian Platter", "ua": "Українська тарілка" },
+          "description": { "en": "Serves 6–10", "ua": "На 6–10 осіб" },
+          "price": 68,
+          "dietary": []
+        },
+        {
+          "id": "cat-salmon-tartare",
+          "name": { "en": "Salmon Tartare", "ua": "Тартар з лосося" },
+          "description": { "en": "Serves 4–6", "ua": "На 4–6 осіб" },
+          "price": 45,
+          "dietary": []
+        },
+        {
+          "id": "cat-salmon-canapes",
+          "name": { "en": "Salmon Canapés", "ua": "Канапе з лососем" },
+          "description": { "en": "12 pcs", "ua": "12 шт" },
+          "price": 65,
+          "dietary": []
+        },
+        {
+          "id": "cat-shrimps",
+          "name": { "en": "Shrimps in Creamy Oyster Sauce", "ua": "Креветки у вершковому устричному соусі" },
+          "description": { "en": "Serves 15–20", "ua": "На 15–20 осіб" },
+          "price": 145,
+          "dietary": []
+        },
+        {
+          "id": "cat-liver-cake",
+          "name": { "en": "Liver Cake", "ua": "Печінковий торт" },
+          "description": { "en": "Serves 18–20", "ua": "На 18–20 осіб" },
+          "price": 69,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "catering-salads",
+      "title": {
+        "en": "Salads",
+        "ua": "Салати"
+      },
+      "note": { "en": "Large trays, serve 8–12 guests depending on salad", "ua": "Великі підноси, на 8–12 гостей залежно від салату" },
+      "items": [
+        {
+          "id": "cat-ukrainian-salad",
+          "name": { "en": "Ukrainian Vegetable Salad", "ua": "Український овочевий салат" },
+          "description": { "en": "Serves 8–10", "ua": "На 8–10 осіб" },
+          "price": 55,
+          "dietary": []
+        },
+        {
+          "id": "cat-green-salad",
+          "name": { "en": "Green Salad with Artichokes", "ua": "Зелений салат з артишоками" },
+          "description": { "en": "Serves 8–10", "ua": "На 8–10 осіб" },
+          "price": 69,
+          "dietary": []
+        },
+        {
+          "id": "cat-shrimp-salad",
+          "name": { "en": "Shrimp Salad", "ua": "Салат з креветками" },
+          "description": { "en": "Serves 10–12", "ua": "На 10–12 осіб" },
+          "price": 95,
+          "dietary": []
+        },
+        {
+          "id": "cat-salmon-salad",
+          "name": { "en": "Salmon Salad", "ua": "Салат з лососем" },
+          "description": { "en": "Serves 8–10", "ua": "На 8–10 осіб" },
+          "price": 84,
+          "dietary": []
+        },
+        {
+          "id": "cat-herring-fur-coat",
+          "name": { "en": "Herring Under a Fur Coat", "ua": "Оселедець під шубою" },
+          "description": { "en": "Serves 10–12", "ua": "На 10–12 осіб" },
+          "price": 75,
+          "dietary": []
+        },
+        {
+          "id": "cat-olivier",
+          "name": { "en": "Olivier Salad", "ua": "Салат Олів'є" },
+          "description": { "en": "Serves 10–12", "ua": "На 10–12 осіб" },
+          "price": 80,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "catering-mains",
+      "title": {
+        "en": "Main Courses",
+        "ua": "Основні страви"
+      },
+      "items": [
+        {
+          "id": "cat-grilled-chicken",
+          "name": { "en": "Grilled Chicken", "ua": "Курка на грилі" },
+          "description": { "en": "Serves 8–10", "ua": "На 8–10 осіб" },
+          "price": 50,
+          "dietary": []
+        },
+        {
+          "id": "cat-grilled-salmon",
+          "name": { "en": "Grilled Salmon", "ua": "Лосось на грилі" },
+          "description": { "en": "Serves 16–18", "ua": "На 16–18 осіб" },
+          "price": 120,
+          "dietary": []
+        },
+        {
+          "id": "cat-chicken-patties",
+          "name": { "en": "Chicken Chopped Patties", "ua": "Курячі посічені котлети" },
+          "description": { "en": "Serves 6–10", "ua": "На 6–10 осіб" },
+          "price": 50,
+          "dietary": []
+        },
+        {
+          "id": "cat-cabbage-rolls",
+          "name": { "en": "Cabbage Rolls", "ua": "Голубці" },
+          "description": { "en": "20 pcs", "ua": "20 шт" },
+          "price": 90,
+          "dietary": []
+        },
+        {
+          "id": "cat-sea-bass",
+          "name": { "en": "Baked Mediterranean Sea Bass", "ua": "Запечений середземноморський сібас" },
+          "description": {
+            "en": "Per piece, minimum 3 pcs",
+            "ua": "За штуку, мінімум 3 шт"
+          },
+          "price": 32,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "catering-sides",
+      "title": {
+        "en": "Sides",
+        "ua": "Гарніри"
+      },
+      "note": { "en": "Serves 6–10 guests", "ua": "На 6–10 гостей" },
+      "items": [
+        {
+          "id": "cat-mashed-potatoes",
+          "name": { "en": "Mashed Potatoes", "ua": "Картопляне пюре" },
+          "description": { "en": "", "ua": "" },
+          "price": 36,
+          "dietary": []
+        },
+        {
+          "id": "cat-home-style-potatoes",
+          "name": { "en": "Home-Style Potatoes", "ua": "Домашня картопля" },
+          "description": { "en": "", "ua": "" },
+          "price": 36,
+          "dietary": []
+        },
+        {
+          "id": "cat-roasted-vegetables",
+          "name": { "en": "Roasted Vegetables", "ua": "Запечені овочі" },
+          "description": { "en": "", "ua": "" },
+          "price": 50,
+          "dietary": []
+        },
+        {
+          "id": "cat-buckwheat",
+          "name": { "en": "Buckwheat", "ua": "Гречка" },
+          "description": { "en": "", "ua": "" },
+          "price": 36,
+          "dietary": []
+        },
+        {
+          "id": "cat-buckwheat-mushrooms",
+          "name": { "en": "Buckwheat with Mushrooms", "ua": "Гречка з грибами" },
+          "description": { "en": "", "ua": "" },
+          "price": 45,
+          "dietary": []
+        }
+      ]
+    },
+    {
+      "id": "catering-desserts",
+      "title": {
+        "en": "Desserts",
+        "ua": "Десерти"
+      },
+      "items": [
+        {
+          "id": "cat-cheesecake",
+          "name": { "en": "Lviv Style Cheesecake", "ua": "Львівський сирник" },
+          "description": { "en": "15 bite-size pieces", "ua": "15 порційних шматочків" },
+          "price": 50,
+          "dietary": []
+        },
+        {
+          "id": "cat-honey-cake",
+          "name": { "en": "Honey Cake", "ua": "Медовик" },
+          "description": { "en": "20 bite-size pieces", "ua": "20 порційних шматочків" },
+          "price": 62,
+          "dietary": []
+        }
+      ]
+    }
+  ]
+}

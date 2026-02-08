@@ -19,7 +19,7 @@
             "en": "Delicate crêpes filled with homemade cottage cheese",
             "ua": "Ніжні млинці з домашнім сиром"
           },
-          "price": 14.00,
+          "price": 20.00,
           "dietary": ["vegetarian"]
         },
         {
@@ -29,27 +29,27 @@
             "en": "Crêpes with caramelized apples and aromatic cinnamon",
             "ua": "Млинці з карамелізованими яблуками та ароматною корицею"
           },
-          "price": 13.00,
+          "price": 20.00,
           "dietary": ["vegetarian"]
         },
         {
-          "id": "banana-nutella",
-          "name": { "en": "Banana & Nutella", "ua": "Банан та нутелла" },
+          "id": "banana-chocolate",
+          "name": { "en": "Banana & Chocolate", "ua": "Банан та шоколад" },
           "description": {
-            "en": "Crêpes with fresh banana and rich Nutella spread",
-            "ua": "Млинці зі свіжим бананом та нутеллою"
+            "en": "Crêpes with fresh banana and rich chocolate",
+            "ua": "Млинці зі свіжим бананом та шоколадом"
           },
-          "price": 11.00,
+          "price": 18.00,
           "dietary": ["vegetarian"]
         },
         {
           "id": "trio-with-toppings",
           "name": { "en": "Trio with Toppings", "ua": "Тріо з топінгами" },
           "description": {
-            "en": "Served with sour cream and two toppings of your choice: honey, maple syrup, condensed milk, orange jam, strawberry jam or Nutella",
-            "ua": "Подаються зі сметаною та двома топінгами на вибір: мед, кленовий сироп, згущене молоко, апельсиновий джем, полуничний джем або нутелла"
+            "en": "Served with sour cream, honey and maple syrup",
+            "ua": "Подаються зі сметаною, медом та кленовим сиропом"
           },
-          "price": 13.00,
+          "price": 14.00,
           "dietary": ["vegetarian"]
         }
       ]
@@ -72,63 +72,23 @@
           "dietary": []
         },
         {
-          "id": "avocado-toast-style",
-          "name": { "en": "Avocado Toast Style", "ua": "В стилі тосту з авокадо" },
+          "id": "mushrooms-creamy-sauce",
+          "name": { "en": "With Mushrooms in Creamy Sauce", "ua": "З грибами у вершковому соусі" },
           "description": {
-            "en": "Crêpes styled as an avocado toast with fresh toppings",
-            "ua": "Млинці у стилі тосту з авокадо та свіжими топінгами"
-          },
-          "price": 17.00,
-          "dietary": ["vegetarian"]
-        },
-        {
-          "id": "caviar-butter",
-          "name": { "en": "Caviar & Butter", "ua": "Ікра та масло" },
-          "description": {
-            "en": "Luxurious crêpes with caviar and butter",
-            "ua": "Вишукані млинці з ікрою та маслом"
-          },
-          "price": 27.00,
-          "dietary": []
-        },
-        {
-          "id": "classic-ham-cheese",
-          "name": { "en": "Classic Ham & Cheese", "ua": "Класичний з шинкою та сиром" },
-          "description": {
-            "en": "Traditional crêpes with ham and melted cheese",
-            "ua": "Традиційні млинці з шинкою та плавленим сиром"
-          },
-          "price": 14.00,
-          "dietary": []
-        },
-        {
-          "id": "creamy-mushroom",
-          "name": { "en": "Creamy Mushroom", "ua": "Грибний у вершковому соусі" },
-          "description": {
-            "en": "Crêpes with creamy mushroom filling with delicate truffle flavour",
-            "ua": "Млинці з грибною начинкою у вершковому соусі з делікатним трюфельним смаком"
-          },
-          "price": 17.00,
-          "dietary": ["vegetarian"]
-        },
-        {
-          "id": "juicy-chicken-onions",
-          "name": { "en": "Juicy Chicken with Fried Onions", "ua": "Соковита курка зі смаженою цибулею" },
-          "description": {
-            "en": "Crêpes filled with juicy chicken and crispy fried onions",
-            "ua": "Млинці з соковитою куркою та хрусткою смаженою цибулею"
+            "en": "Crêpes with creamy mushroom filling",
+            "ua": "Млинці з грибною начинкою у вершковому соусі"
           },
           "price": 22.00,
-          "dietary": []
+          "dietary": ["vegetarian"]
         },
         {
           "id": "beef-stroganoff-style",
           "name": { "en": "Beef Stroganoff Style", "ua": "У стилі бефстроганов" },
           "description": {
-            "en": "Crêpes with tender beef in a rich creamy Stroganoff sauce",
-            "ua": "Млинці з ніжною яловичиною у насиченому вершковому соусі строганов"
+            "en": "Crêpes with tender beef in a rich creamy Stroganoff sauce with delicate truffle flavour",
+            "ua": "Млинці з ніжною яловичиною у насиченому вершковому соусі строганов з делікатним трюфельним смаком"
           },
-          "price": 24.00,
+          "price": 22.00,
           "dietary": []
         }
       ]
